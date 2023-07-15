@@ -1,0 +1,59 @@
+Hai usato un metodo che stava in un ìa classe ma che usava un metodo di un altra classe parente quindi devi chiamarle entrambe.
+Una classe ad esempio Photos non rappresenta una singola foto ma le rappresenta tutte ecco perchè esiste l'id.
+perchè immagine troppo grande.
+Lui nel video crea set_photo nella classe users cosi asegna i nomi alle proprietà e salva le foto nella directory.
+if (!empty($_FILES['user_image'])) {
+$user->set_file($_FILES['user_image']);
+$user->save_user_and_image();
+}
+
+$user->update();
+}
+
+/*0
+$sql = "SELECT * FROM users WHERE id = 1 ";
+$result = $database->query($sql);
+$user_found = mysqli_fetch_array($result);
+echo $user_found['username'];*/
+
+
+// $result_set = User::find_all_users();
+// while($row = mysqli_fetch_array($result_set)){
+// echo $row['username'] . "<br>";
+// }
+// $found_user = User::find_all_users_by_id(1);
+// $row = mysqli_fetch_array($found_user);
+// $user = User::instantation($row);
+//
+// echo $user->first_name;
+
+//$users = Photo::find_all();
+//foreach ($users as $user) {
+// echo $user->title;
+//}
+
+echo INCLUDES_PATH;
+//$found_user = Users::find_all_users_by_id(1);
+//$found_user2 = Users::find_all_users_by_id(2);
+
+//$row1 = mysqli_fetch_array($found_user);
+//echo $found_user->username . '<br>';
+//echo $found_user2->username;
+//$user = new Users;
+//$user->username = "cicciobello1";
+//$user->password = "Cicciobello";
+//$user->first_name = "cicciobello";
+//$user->username = "cicciobello";
+//$user->last_name = "cicicobello";
+//$user->password = "ok";
+//$user->create();
+//$user = Users::find_all_users_by_id(10);
+//$user->username = "ciao";
+//$user->update();
+//$user->Delete();
+//$user = Users::find_all_users_by_id(10);
+
+//$user = new Users;
+
+//$user->username = "cactus1";
+//$user->();
