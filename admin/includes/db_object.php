@@ -1,12 +1,12 @@
 <?php
 class Db_object
 {
+    public $id = NULL;
     protected static $db_table = NULL;
     protected static $db_table_fields = NULL;
-    public $id = NULL;
+
     public static function find_all()
     {
-
         return self::find_this_query("SELECT * FROM " . static::$db_table);
     }
 
@@ -14,6 +14,7 @@ class Db_object
     {
         global $database;
         $the_result_array = self::find_this_query("SELECT * FROM " . static::$db_table . " WHERE id = $id LIMIT 1");
+
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
 
@@ -43,6 +44,7 @@ class Db_object
 
 
         $the_result_array = static::find_this_query($sql);
+
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
 
@@ -61,15 +63,10 @@ class Db_object
                 $the_object->$the_attribute = $value;
             }
         }
+
         return $the_object;
     }
 
-
-    private function has_the_attribute($the_attribute)
-    {
-        $object_properties = get_object_vars($this);
-        return array_key_exists($the_attribute, $object_properties);
-    }
 
     public function properties()
     {
@@ -139,6 +136,7 @@ class Db_object
         //$sql .= "last_name='" . $database->escape_string($this->last_name) . "' ";
         $sql .= " WHERE id=" . (int)$this->id;
         $database->query($sql);
+
         return (mysqli_affected_rows($database->connection) == 1) ? true : false;
     }
 
@@ -150,6 +148,7 @@ class Db_object
         $sql .= "WHERE id=" . $database->escape_string($this->id);
 
         $database->query($sql);
+
         return (mysqli_affected_rows($database->connection) == 1) ? true : false;
     }
     private function clean_proprieties()
@@ -160,6 +159,7 @@ class Db_object
         foreach ($this->properties() as $proprety => $value) {
             $clean_proprieties[$proprety] = $database->escape_string($value);
         }
+
         return $clean_proprieties;
     }
     public function number_photo()
@@ -168,6 +168,13 @@ class Db_object
         $sql = "SELECT COUNT(*) FROM " . static::$db_table;
         $result = $database->query($sql);
         $row = mysqli_fetch_array($result);
+
         return array_shift($row);
+    }
+    private function has_the_attribute($the_attribute)
+    {
+        $object_properties = get_object_vars($this);
+
+        return array_key_exists($the_attribute, $object_properties);
     }
 }

@@ -2,8 +2,8 @@
 class Users extends Db_object
 {
 
-    protected static $db_table = "users";
-    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name', 'user_image');
+
+    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name', 'user_image',);
     public $id;
     public $username;
     public $password;
@@ -12,6 +12,7 @@ class Users extends Db_object
     public $user_image;
     public $upload_directory = 'images';
     public $image_placeholder = 'http://placehold.it/62x62&text=image';
+    protected static $db_table = "users";
 
     private $tmp_path, $type_user, $size_user;
 

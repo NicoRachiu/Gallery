@@ -3,9 +3,9 @@
 <?php
 
 if ($session->is_signed_in()) {
-
     redirect("index.php");
 }
+
 if (isset($_POST['submit'])) {
 
     $username = trim($_POST['username']);
@@ -16,6 +16,7 @@ if (isset($_POST['submit'])) {
     echo '<pre style="background:#23282d;z-index:99999999;color:#78FF5B;font-size:14px;position:relative;">';
     echo htmlspecialchars(print_r($user_found, true));
     echo '</pre>';
+
     if ($user_found) {
 
         $session->login($user_found);
@@ -29,7 +30,10 @@ if (isset($_POST['submit'])) {
     $username = "";
     $password = "";
 }
+
 ?>
+
+
 <div class="col-md-4 col-md-offset-3">
 
     <h4 class="bg-danger"><?php echo $the_message; ?></h4>

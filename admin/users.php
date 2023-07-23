@@ -45,8 +45,7 @@
                             ?>
                                 <tr>
                                     <td><?php echo $user->id; ?></td>
-                                    <td><img class="user-image" src="<?php echo $user->image_path_and_placeholder();
-                                                                        ?> ">
+                                    <td><img class="user-image" src="<?php echo $user->image_path_and_placeholder(); ?> ">
 
                                     </td>
                                     <td><?php echo $user->username; ?>

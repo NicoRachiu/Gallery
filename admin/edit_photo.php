@@ -7,6 +7,7 @@
 if (isset($_POST['update'])) {
     echo "IT WORKS!!!";
 }
+
 if (empty($_GET['id'])) {
     redirect('photos.php');
     //echo 'ciao';
@@ -14,6 +15,7 @@ if (empty($_GET['id'])) {
     $photo = Photo::find_all_users_by_id($_GET['id']);
 
     if (isset($_POST['update'])) {
+
         if ($photo) {
 
 

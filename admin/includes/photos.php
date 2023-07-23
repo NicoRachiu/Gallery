@@ -1,8 +1,7 @@
 <?php
 class Photo extends Db_object
 {
-    protected static $db_table = "photos";
-    protected static $db_table_fields = array('id', 'title', 'caption', 'description', 'last_name', 'filename', 'alternative_text', 'type', 'size');
+
     public $id;
     public $title;
     public $description;
@@ -24,9 +23,11 @@ class Photo extends Db_object
         UPLOAD_ERR_NO_FILE => "No file was uploaded.",
         UPLOAD_ERR_NO_TMP_DIR => "Missing a temporary folder.",
         UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk.",
-        UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
+        UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload.",
 
     );
+    protected static $db_table = "photos";
+    protected static $db_table_fields = array('id', 'title', 'caption', 'description', 'last_name', 'filename', 'alternative_text', 'type', 'size');
 
 
     public function set_file($file)
