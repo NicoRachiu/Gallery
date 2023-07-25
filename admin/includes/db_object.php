@@ -1,9 +1,7 @@
 <?php
-class Db_object
+class Db_Object
 {
-    public $id = NULL;
-    protected static $db_table = NULL;
-    protected static $db_table_fields = NULL;
+
 
     public static function find_all()
     {
@@ -96,7 +94,7 @@ class Db_object
         $sql  = "INSERT INTO " . static::$db_table . "(" . implode(",", array_keys($properties)) . ")";
         $sql .= " VALUES ('" . implode("', '", array_values($properties)) . "')";
         if ($database->query($sql) === TRUE) {
-            echo "Record inserted successfully";
+            return true;
         } else {
             echo "Error: " . $sql . "<br>";
         }

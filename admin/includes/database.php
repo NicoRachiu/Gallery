@@ -1,6 +1,6 @@
 <?php
 
-require_once("new_config.php");
+
 
 class Database
 {
@@ -16,14 +16,11 @@ class Database
     {
         //$escaped_string = mysqli_real_escape_string($this->connection, $string);
         $escaped_string = $this->connection->real_escape_string($string);
+
         return $escaped_string;
     }
 
-    public function the_insert_id()
-    {
 
-        return mysqli_insert_id($this->connection);
-    }
 
     public function open_db_connection()
     {
@@ -31,8 +28,6 @@ class Database
         $this->connection = new mysqli(DB_HOST, DB_USER, DB_PAS, DB_NAME);
         if ($this->connection->connect_errno) {
             die("failed" . $this->connection->connect_error);
-        } else {
-            //echo ("win");
         }
     }
 
@@ -42,6 +37,7 @@ class Database
         //$result = mysqli_query($this->connection, $sql);
         $result = $this->connection->query($sql);
         $this->confirm_query($result);
+
         return $result;
     }
 

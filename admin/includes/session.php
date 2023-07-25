@@ -7,8 +7,9 @@ class Session
     public $user_id;
     public $message;
     public $count;
+    public  $empty_message = "The message is empty";
     private $signed_in = false;
-    function __construct()
+    public function __construct()
     {
         session_start();
         $this->check_the_login();
@@ -34,16 +35,13 @@ class Session
         if (isset($_SESSION['count'])) {
 
             return $this->count = $_SESSION['count']++;
-        } else {
-            return  $_SESSION['count'] = 1;
         }
     }
 
 
     public function logout()
     {
-        unset($_SESSION['user_id']);
-        unset($this->user_id);
+        unset($_SESSION['user_id'], $this->user_id);
         $this->signed_in = false;
     }
 
@@ -54,7 +52,7 @@ class Session
         if (!empty($msg)) {
             $_SESSION['message'] = $msg;
         } else {
-            return $this->message;
+            echo $this->empty_message;
         }
     }
 
