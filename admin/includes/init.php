@@ -6,8 +6,8 @@ defined('INCLUDES_PATH') ? null : define('INCLUDES_PATH', SITE_ROOT . DS . 'admi
 
 include("function.php");
 include("new_config.php");
-include("database.php");
-include("session.php");
-include("db_object.php");
-include("comment.php");
-include("photos.php");
+include("Database.php");
+include("Session.php");
+include("Db_Object.php");
+include("Comment.php");
+include("Photos.php");
