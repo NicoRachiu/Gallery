@@ -8,6 +8,6 @@ include("function.php");
 include("new_config.php");
 include("database.php");
 include("session.php");
-include("db_object.php");
+include("DB_Object.php");
 include("comment.php");
 include("photos.php");

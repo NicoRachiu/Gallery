@@ -1,7 +1,10 @@
 <?php
-class Db_Object
+class DB_Object
 {
 
+    protected static $db_table;
+    protected static $db_table_fields;
+    public $id;
 
     public static function find_all()
     {

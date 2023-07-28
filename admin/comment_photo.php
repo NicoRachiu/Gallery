@@ -10,9 +10,7 @@ $comments = Comment::find_the_comments($_GET['id']); ?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-
     <?php include("includes/top_nav.php") ?>
-
 
     <!-- Top Menu Items -->
     <?php include("includes/side_nav.php") ?>
@@ -52,15 +50,9 @@ $comments = Comment::find_the_comments($_GET['id']); ?>
                                     <td><?php echo $comment->author; ?>
                                         <div class="actions_links">
                                             <a href="delete_comment.php?id=<?php echo $comment->id; ?>">Delete</a>
-
-
                                     </td>
-
-
-
                                 </tr>
                             <?php endforeach; ?>
-
                         </tbody>
                     </table>
                 </div>

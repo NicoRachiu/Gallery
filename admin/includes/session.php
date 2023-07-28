@@ -13,7 +13,7 @@ class Session
     {
         session_start();
         $this->check_the_login();
-        $this->message();
+        $this->message(null);
         $this->check_message();
         $this->visitor_count();
     }
@@ -35,6 +35,8 @@ class Session
         if (isset($_SESSION['count'])) {
 
             return $this->count = $_SESSION['count']++;
+        } else {
+            echo "Session count doesn't exist!!!";
         }
     }
 
@@ -46,11 +48,11 @@ class Session
     }
 
 
-    public function message($msg = "")
+    public function message($msg)
     {
 
         if (!empty($msg)) {
-            $_SESSION['message'] = $msg;
+            return $_SESSION['message'] = $msg;
         } else {
             echo $this->empty_message;
         }

@@ -1,5 +1,5 @@
 <?php
-class Users extends Db_object
+class Users extends DB_object
 {
 
 

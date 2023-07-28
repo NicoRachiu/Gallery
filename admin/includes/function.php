@@ -1,7 +1,7 @@
 <?php
 
 
-function extraction($class)
+function estrazione($class)
 {
 
     $class = strtolower($class);
@@ -16,8 +16,7 @@ function extraction($class)
     }
 }
 
-spl_autoload_register("extraction");
-
+spl_autoload_register("estrazione");
 function redirect($location)
 {
     header("Location: {$location}");

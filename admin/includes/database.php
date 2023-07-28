@@ -7,7 +7,7 @@ class Database
 
     public $connection;
 
-    function __construct()
+    public function __construct()
     {
         $this->open_db_connection();
     }
@@ -20,8 +20,6 @@ class Database
         return $escaped_string;
     }
 
-
-
     public function open_db_connection()
     {
         //$this->connection = mysqli_connect(DB_HOST, DB_USER, DB_PAS, DB_NAME);
@@ -30,7 +28,6 @@ class Database
             die("failed" . $this->connection->connect_error);
         }
     }
-
 
     public function query($sql)
     {
@@ -41,7 +38,6 @@ class Database
         return $result;
     }
 
-
     private function confirm_query($result)
     {
         if (!$result) {
@@ -50,6 +46,4 @@ class Database
     }
 }
 
-
 $database = new Database();
-$database->open_db_connection();

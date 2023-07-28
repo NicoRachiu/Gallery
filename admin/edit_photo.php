@@ -18,7 +18,6 @@ if (empty($_GET['id'])) {
 
         if ($photo) {
 
-
             $photo->title = $_POST['title'];
             $photo->caption = $_POST['caption'];
             $photo->alternative_text = $_POST['alternative_text'];
@@ -33,9 +32,7 @@ if (empty($_GET['id'])) {
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-
     <?php include("includes/top_nav.php") ?>
-
 
     <!-- Top Menu Items -->
     <?php include("includes/side_nav.php") ?>
@@ -85,7 +82,6 @@ if (empty($_GET['id'])) {
                                         </div>
 
                                     </div>
-
 
                                 </div>
                             </div>

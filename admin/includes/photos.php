@@ -1,5 +1,5 @@
 <?php
-class Photo extends Db_object
+class Photo extends DB_object
 {
 
     public $id;
@@ -71,7 +71,10 @@ class Photo extends Db_object
     {
         if ($this->delete()) {
             $target_path = SITE_ROOT . DS . 'admin' . DS . $this->picture_path();
+
             return unlink($target_path) ? true : false;
+        } else {
+            echo "If the photo isn't delete this function doesn't return nothing";
         }
     }
 }
