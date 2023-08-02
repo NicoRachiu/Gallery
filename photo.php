@@ -1,5 +1,5 @@
 <!DOCTYPE html> <?php include("includes/navigation.php"); ?>
-<?php include("admin\includes\header.php"); ?>
+<?php include("admin/includes/header.php"); ?>
 <?php require_once("admin/includes/init.php") ?>
 <?php
 
