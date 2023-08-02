@@ -38,7 +38,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $comments = comment::find_all(); ?>
+                            <?php $comments = Comment::find_all(); ?>
                             <?php foreach ($comments as $comment) :
                             ?>
                                 <tr>
