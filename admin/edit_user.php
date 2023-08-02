@@ -28,16 +28,11 @@ if (isset($_POST['update'])) {
     }
 }
 
-
-
-
 ?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-
     <?php include("includes/top_nav.php") ?>
-
 
     <!-- Top Menu Items -->
     <?php include("includes/side_nav.php") ?>
@@ -72,13 +67,10 @@ if (isset($_POST['update'])) {
 
                                 </div>
 
-
-
                                 <div class="form-group">
 
                                     <label for="username">First Name</label>
                                     <input type="text" name="first_name" class="form-control" value="<?php echo $user->first_name; ?>">
-
 
 
                                     <div class="form-group"> <label for="last_name">Last Name</label>

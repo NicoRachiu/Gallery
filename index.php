@@ -6,7 +6,7 @@
     <!-- Blog Entries Column -->
     <div class="col-md-12">
         <div class="thumbnails row">
-            <?php foreach ($photos as  $photo) : ?>
+            <?php foreach ($photos as $photo) : ?>
 
                 <div class="col-xs-6 col-md-3">
                     <a class="thumbnail" href="photo.php?id=<?php echo $photo->id; ?>">
@@ -28,8 +28,7 @@
 
     <!-- Blog Sidebar Widgets Column -->
     <div class="col-md-4">
-        <?php include("includes/sidebar.php");
-        ?>
+        <?php include("includes/sidebar.php"); ?>
     </div>
     <!-- /.row -->
     <?php include("includes/footer.php"); ?>

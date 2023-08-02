@@ -1,5 +1,5 @@
 <!DOCTYPE html> <?php include("includes/navigation.php"); ?>
-<?php include("admin\includes\header.php"); ?>
+<?php include("admin/includes/header.php"); ?>
 <?php require_once("admin/includes/init.php") ?>
 <?php
 
@@ -94,7 +94,7 @@ $comments = Comment::find_the_comments($photo->id);
 
                 <!-- Post Content -->
                 <p class="lead"><?php echo $photo->caption; ?> </p>
-                <p><?php $photo->description; ?></p>
+
                 <hr>
 
                 <!-- Blog Comments -->
@@ -105,7 +105,7 @@ $comments = Comment::find_the_comments($photo->id);
                     <form role="form" method="post">
                         <div class="form-group">
                             <label for="author">Author</label>
-                            <input type="text" name="author" class="form-control"></input>
+                            <input type="text" name="author" class="form-control">
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" rows="3" name="body"></textarea>

@@ -7,9 +7,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-
     <?php include("includes/top_nav.php") ?>
-
 
     <!-- Top Menu Items -->
     <?php include("includes/side_nav.php") ?>
@@ -45,8 +43,7 @@
                             ?>
                                 <tr>
                                     <td><?php echo $user->id; ?></td>
-                                    <td><img class="user-image" src="<?php echo $user->image_path_and_placeholder();
-                                                                        ?> ">
+                                    <td><img class="user-image" src="<?php echo $user->image_path_and_placeholder(); ?> ">
 
                                     </td>
                                     <td><?php echo $user->username; ?>
