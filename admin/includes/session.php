@@ -3,15 +3,17 @@
 class Session
 {
 
-    private $signed_in = false;
+
     public $user_id;
     public $message;
     public $count;
-    function __construct()
+    public  $empty_message = "The message is empty";
+    private $signed_in = false;
+    public function __construct()
     {
         session_start();
         $this->check_the_login();
-        $this->message();
+        $this->message(null);
         $this->check_message();
         $this->visitor_count();
     }
@@ -28,6 +30,33 @@ class Session
             $this->signed_in = true;
         }
     }
+    public function visitor_count()
+    {
+        if (isset($_SESSION['count'])) {
+
+            return $this->count = $_SESSION['count']++;
+        } else {
+            echo "Session count doesn't exist!!!";
+        }
+    }
+
+
+    public function logout()
+    {
+        unset($_SESSION['user_id'], $this->user_id);
+        $this->signed_in = false;
+    }
+
+
+    public function message($msg)
+    {
+
+        if (!empty($msg)) {
+            return $_SESSION['message'] = $msg;
+        } else {
+            echo $this->empty_message;
+        }
+    }
 
     private function check_the_login()
     {
@@ -38,34 +67,6 @@ class Session
         } else {
             unset($this->user_id);
             $this->signed_in = false;
-        }
-    }
-    public function visitor_count()
-    {
-        if (isset($_SESSION['count'])) {
-
-            return $this->count = $_SESSION['count']++;
-        } else {
-            return  $_SESSION['count'] = 1;
-        }
-    }
-
-
-    public function logout()
-    {
-        unset($_SESSION['user_id']);
-        unset($this->user_id);
-        $this->signed_in = false;
-    }
-
-
-    public function message($msg = "")
-    {
-
-        if (!empty($msg)) {
-            $_SESSION['message'] = $msg;
-        } else {
-            return $this->message;
         }
     }
 

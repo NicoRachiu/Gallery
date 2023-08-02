@@ -1,8 +1,7 @@
 <?php
-class Photo extends Db_object
+class Photo extends DB_object
 {
-    protected static $db_table = "photos";
-    protected static $db_table_fields = array('id', 'title', 'caption', 'description', 'last_name', 'filename', 'alternative_text', 'type', 'size');
+
     public $id;
     public $title;
     public $description;
@@ -13,9 +12,9 @@ class Photo extends Db_object
     public $caption;
     public $tmp_path;
     public $upload_directory = "images";
-    public $errors = array();
+    public $errors = [];
 
-    public $upload_errors_array = array(
+    public $upload_errors_array = [
 
         UPLOAD_ERR_OK => "There is no error",
         UPLOAD_ERR_INI_SIZE => "The uploaded file exceeds the upload_max_filesize di",
@@ -24,9 +23,11 @@ class Photo extends Db_object
         UPLOAD_ERR_NO_FILE => "No file was uploaded.",
         UPLOAD_ERR_NO_TMP_DIR => "Missing a temporary folder.",
         UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk.",
-        UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload."
+        UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload.",
 
-    );
+    ];
+    protected static $db_table = "photos";
+    protected static $db_table_fields = ['id', 'title', 'caption', 'description', 'last_name', 'filename', 'alternative_text', 'type', 'size'];
 
 
     public function set_file($file)
@@ -43,11 +44,11 @@ class Photo extends Db_object
             $this->tmp_path = ($file['tmp_name']);
             $this->type = $file['type'];
             $this->size = $file['size'];
-            $this->save();
+            return $this->save();
         }
     }
 
-    function picture_path()
+    public function picture_path()
     {
         return $this->upload_directory . DS . $this->filename;
     }
@@ -70,9 +71,10 @@ class Photo extends Db_object
     {
         if ($this->delete()) {
             $target_path = SITE_ROOT . DS . 'admin' . DS . $this->picture_path();
+
             return unlink($target_path) ? true : false;
         } else {
-            echo "something is wrong";
+            echo "If the photo isn't delete this function doesn't return nothing";
         }
     }
 }

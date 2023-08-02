@@ -7,6 +7,7 @@
 if (isset($_POST['update'])) {
     echo "IT WORKS!!!";
 }
+
 if (empty($_GET['id'])) {
     redirect('photos.php');
     //echo 'ciao';
@@ -14,8 +15,8 @@ if (empty($_GET['id'])) {
     $photo = Photo::find_all_users_by_id($_GET['id']);
 
     if (isset($_POST['update'])) {
-        if ($photo) {
 
+        if ($photo) {
 
             $photo->title = $_POST['title'];
             $photo->caption = $_POST['caption'];
@@ -31,9 +32,7 @@ if (empty($_GET['id'])) {
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-
     <?php include("includes/top_nav.php") ?>
-
 
     <!-- Top Menu Items -->
     <?php include("includes/side_nav.php") ?>
@@ -83,7 +82,6 @@ if (empty($_GET['id'])) {
                                         </div>
 
                                     </div>
-
 
                                 </div>
                             </div>

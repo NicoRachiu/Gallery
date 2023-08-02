@@ -1,27 +1,30 @@
-<?php //include("init.php");
-class Comment extends Db_object
-{
+<?php
+// include("init.php");
 
+class Comment extends DB_object
+{
     protected static $db_table = "comments";
-    protected static $db_table_fields = array('photo_id', 'author', 'id', 'body');
+    protected static $db_table_fields = ['photo_id', 'author', 'id', 'body',];
     public $id;
     public $photo_id;
     public $author;
     public $body;
-    public static function create_comment($photo_id, $author, $body)
+
+    public static function create_comment($photo_id, $author, $body, $id)
     {
         if (!empty($photo_id) && !empty($author) && !empty($body)) {
-            $comment = new Comment();
-
+            $comment = new self();
             $comment->photo_id = (int)$photo_id;
             $comment->author = $author;
             $comment->body = $body;
+            $comment->id = $id;
 
             return $comment;
         } else {
-            return false;
+            echo "Something of Message is empty.";
         }
     }
+
     public static function find_the_comments($photo_id = 0)
     {
         global $database;

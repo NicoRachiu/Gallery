@@ -1,19 +1,25 @@
-<?php include("includes/init.php");
-if (!$session->is_signed_in()) {
-    redirect("login.php");
-}  ?>
-<!-- Navigation -->
-<?php
+<<?php
 
-if (empty($_GET['id'])) {
-    redirect('users.php');
-}
+    include("includes/init.php");
 
-$comment = Comment::find_all_users_by_id($_GET['id']);
+    // Verifica se l'utente ha effettuato l'accesso
+    if (!$session->is_signed_in()) {
+        redirect("login.php");
+    }
 
-if ($comment) {
-    $comment->delete();
-    redirect("comments.php");
-} else {
-    redirect('comments.php');
-}
+    // Verifica se l'ID del commento è stato fornito
+    if (empty($_GET['id'])) {
+        redirect('users.php');
+    }
+
+    // Cerca il commento con l'ID specificato
+    $comment = Comment::find_all_users_by_id($_GET['id']);
+
+    // Se il commento esiste, eliminalo e reindirizza l'utente alla pagina dei commenti
+    if ($comment) {
+        $comment->delete();
+        redirect("comments.php");
+    } else {
+        // Altrimenti, reindirizza l'utente alla pagina dei commenti
+        redirect('comments.php');
+    }
