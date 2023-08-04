@@ -38,8 +38,10 @@ if (!$session->is_signed_in()) {
                             </tr>
                         </thead>
                         <tbody>
+
                             <?php $comments = comment::find_all(); ?>
                             <?php foreach ($comments as $comment) : ?>
+
                                 <tr>
                                     <td><?php echo $comment->id; ?></td>
                                     <td><?php echo $comment->body; ?></td>
