@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<?php ob_start(); ?>
 <?php include('init.php'); ?>
-
-
+<?php $session = new Session(); ?>
+<?php ob_start(); ?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>

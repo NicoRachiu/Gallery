@@ -1,7 +1,6 @@
 <?php
 class DB_Object
 {
-
     protected static $db_table;
     protected static $db_table_fields;
     public $id;
@@ -68,7 +67,6 @@ class DB_Object
         return $the_object;
     }
 
-
     public function properties()
     {
         $properties = array();
@@ -81,13 +79,11 @@ class DB_Object
         return $properties;
     }
 
-
     public function save()
     {
 
         return (isset($this->id)) ? $this->update() : $this->create();
     }
-
 
     public function create()
     {
@@ -120,7 +116,6 @@ class DB_Object
         //echo '</pre>';
     }
 
-
     public function update()
     {
         global $database;
@@ -141,7 +136,6 @@ class DB_Object
         return (mysqli_affected_rows($database->connection) == 1) ? true : false;
     }
 
-
     public function Delete()
     {
         global $database;
@@ -152,6 +146,7 @@ class DB_Object
 
         return (mysqli_affected_rows($database->connection) == 1) ? true : false;
     }
+
     private function clean_proprieties()
     {
         global $database;
@@ -163,6 +158,7 @@ class DB_Object
 
         return $clean_proprieties;
     }
+
     public function number_photo()
     {
         global $database;
@@ -172,6 +168,7 @@ class DB_Object
 
         return array_shift($row);
     }
+
     private function has_the_attribute($the_attribute)
     {
         $object_properties = get_object_vars($this);

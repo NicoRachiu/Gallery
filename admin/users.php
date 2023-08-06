@@ -50,7 +50,7 @@
                                         <div class="actions_links">
                                             <a href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
                                             <a href="edit_user.php?id=<?php echo $user->id; ?>">Edit</a>
-
+                                        </div>
                                     </td>
 
                                     <td><?php echo $user->first_name; ?></td>
@@ -64,7 +64,6 @@
             </div>
         </div>
         <!-- /.row -->
-
     </div>
     <!-- /.container-fluid -->
 </div>

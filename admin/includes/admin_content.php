@@ -7,10 +7,6 @@
                 Admin
                 <small>Dashboard</small>
             </h1>
-            <?php
-
-
-            ?>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
@@ -44,7 +40,7 @@
                                     <i class="fa fa-photo fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php $photos = new Photo;
+                                    <div class="huge"><?php $photos = new Photos;
                                                         echo $photos->number_photo(); ?></div>
                                     <div>Photos</div>
                                 </div>
@@ -112,7 +108,6 @@
                     </div>
                 </div>
 
-
             </div> <!--First Row-->
             <div class="row">
                 <div id="piechart" style="width: 900px; height: 500px;"></div>
@@ -120,6 +115,5 @@
         </div>
     </div>
     <!-- /.row -->
-
 </div>
 <!-- /.container-fluid -->
