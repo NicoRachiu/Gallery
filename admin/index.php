@@ -1,5 +1,4 @@
-<?php include("includes/header.php"); //include("init.php") 
-?>
+<?php include("includes/header.php"); ?>
 
 <?php if (!$session->is_signed_in()) {
     redirect("login.php");

@@ -1,8 +1,6 @@
 <?php
 class Users extends DB_object
 {
-
-
     protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name', 'user_image',);
     public $id;
     public $username;

@@ -2,8 +2,6 @@
 
 class Session
 {
-
-
     public $user_id;
     public $message;
     public $count;
@@ -13,7 +11,6 @@ class Session
     {
         session_start();
         $this->check_the_login();
-        $this->message(null);
         $this->check_message();
         $this->visitor_count();
     }
@@ -30,32 +27,18 @@ class Session
             $this->signed_in = true;
         }
     }
+
     public function visitor_count()
     {
         if (isset($_SESSION['count'])) {
-
-            return $this->count = $_SESSION['count']++;
-        } else {
-            echo "Session count doesn't exist!!!";
+            $this->count = $_SESSION['count']++;
         }
     }
-
 
     public function logout()
     {
         unset($_SESSION['user_id'], $this->user_id);
         $this->signed_in = false;
-    }
-
-
-    public function message($msg)
-    {
-
-        if (!empty($msg)) {
-            return $_SESSION['message'] = $msg;
-        } else {
-            echo $this->empty_message;
-        }
     }
 
     private function check_the_login()
@@ -70,7 +53,6 @@ class Session
         }
     }
 
-
     private function check_message()
     {
 
@@ -78,7 +60,7 @@ class Session
 
             $this->message = $_SESSION['message'];
 
-            unset($_SESSION['message']);  //vedi alla fine il risultato;
+            unset($_SESSION['message']);
 
         } else {
 
@@ -86,5 +68,3 @@ class Session
         }
     }
 }
-
-$session = new Session();

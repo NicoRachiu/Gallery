@@ -1,5 +1,4 @@
 <?php
-// include("init.php");
 
 class Comment extends DB_object
 {
@@ -10,14 +9,13 @@ class Comment extends DB_object
     public $author;
     public $body;
 
-    public static function create_comment($photo_id, $author, $body, $id)
+    public static function create_comment($photo_id, $author, $body)
     {
         if (!empty($photo_id) && !empty($author) && !empty($body)) {
             $comment = new self();
             $comment->photo_id = (int)$photo_id;
             $comment->author = $author;
             $comment->body = $body;
-            $comment->id = $id;
 
             return $comment;
         } else {

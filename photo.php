@@ -1,14 +1,13 @@
-<!DOCTYPE html> <?php include("includes/navigation.php"); ?>
+<!DOCTYPE html>
 <?php include("admin/includes/header.php"); ?>
-<?php require_once("admin/includes/init.php") ?>
+<?php include("includes/navigation.php"); ?>
 <?php
 
-//echo $photo->title;
 if (empty($_GET['id'])) {
     redirect("index.php");
 }
 
-$photo = Photo::find_all_users_by_id($_GET['id']);
+$photo = Photos::find_all_users_by_id($_GET['id']);
 
 if (isset($_POST['submit'])) {
     $author = trim($_POST['author']);
@@ -31,9 +30,7 @@ $comments = Comment::find_the_comments($photo->id);
 
 ?>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-12s">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,51 +51,31 @@ $comments = Comment::find_the_comments($photo->id);
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
-
-
 <body>
-
-
-
     <!-- Page Content -->
     <div class="container">
-
         <div class="row">
-
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
-
                 <!-- Blog Post -->
-
                 <!-- Title -->
                 <h1><?php echo $photo->title; ?></h1>
-
                 <!-- Author -->
                 <p class="lead">
                     by <a href="#"><?php  ?></a>
                 </p>
-
                 <hr>
-
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
-
                 <hr>
-
                 <!-- Preview Image -->
                 <img class="img-responsive" src="admin/<?php echo $photo->picture_path(); ?>" alt="">
-
                 <hr>
-
                 <!-- Post Content -->
                 <p class="lead"><?php echo $photo->caption; ?> </p>
-
                 <hr>
-
                 <!-- Blog Comments -->
-
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
@@ -113,11 +90,8 @@ $comments = Comment::find_the_comments($photo->id);
                         <button name="submit" type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
-
                 <hr>
-
                 <!-- Posted Comments -->
-
                 <!-- Comment -->
                 <?php foreach ($comments as $comment) : ?>
                     <div class="media">
@@ -132,27 +106,15 @@ $comments = Comment::find_the_comments($photo->id);
                         </div>
                     </div>
                 <?php endforeach; ?>
-
-
             </div>
-
-
-
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">
-
-
                 <?php include("includes/sidebar.php"); ?>
-
-
-
             </div>
             <!-- /.row -->
-
             <?php include("includes/footer.php"); ?>
-
-
-
+        </div>
+    </div>
 </body>
 
 </html>
