@@ -1,22 +1,16 @@
 <?php
 
-
-function estrazione($class)
+function autoload($class)
 {
-
-    $class = strtolower($class);
-    $the_path = "includes/{$class}.php";
-
+    $the_path = __DIR__ . DS . "{$class}.php";
 
     if (file_exists($the_path)) {
         require_once($the_path);
-        //echo "it's done ";
-    } else {
-        die("something failed");
     }
 }
 
-spl_autoload_register("estrazione");
+spl_autoload_register('autoload');
+
 function redirect($location)
 {
     header("Location: {$location}");

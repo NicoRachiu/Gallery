@@ -1,4 +1,4 @@
-<?php include("admin\includes\header.php"); ?>
+<?php include("admin/includes/header.php"); ?>
 
 <?php $photos = Photo::find_all(); ?>
 <div class="row">

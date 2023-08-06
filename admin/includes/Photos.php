@@ -1,7 +1,6 @@
 <?php
-class Photo extends DB_object
+class Photos extends DB_object
 {
-
     public $id;
     public $title;
     public $description;
@@ -29,7 +28,6 @@ class Photo extends DB_object
     protected static $db_table = "photos";
     protected static $db_table_fields = ['id', 'title', 'caption', 'description', 'last_name', 'filename', 'alternative_text', 'type', 'size'];
 
-
     public function set_file($file)
     {
         if (empty($file) || !$file || !is_array($file)) {
@@ -55,8 +53,6 @@ class Photo extends DB_object
 
     public function save()
     {
-
-
         if (move_uploaded_file($this->tmp_path, $this->upload_directory . DS . $this->filename)) {
             if ($this->create()) {
                 unset($tmp_path);
