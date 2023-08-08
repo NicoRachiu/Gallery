@@ -2,12 +2,13 @@
 
 function autoload($class)
 {
-    $the_path = __DIR__ . DS . "{$class}.php";
+    $the_path = __DIR__ . '/../classes/' . "{$class}.php";
 
     if (file_exists($the_path)) {
         require_once($the_path);
     }
 }
+
 
 spl_autoload_register('autoload');
 

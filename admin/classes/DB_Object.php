@@ -1,4 +1,5 @@
 <?php
+include("Database.php");
 class DB_Object
 {
     protected static $db_table;

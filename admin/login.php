@@ -1,7 +1,10 @@
 <?php require_once("includes/header.php"); ?>
+<?php include("classes/Session.php");
+include("classes/Users.php"); ?>
+
 
 <?php
-
+$session = new Session();
 if ($session->is_signed_in()) {
     redirect("index.php");
 }

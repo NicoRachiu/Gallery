@@ -1,5 +1,6 @@
 <?php include('init.php'); ?>
-<?php $session = new Session(); ?>
+<?php //$session = new Session(); 
+?>
 <?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">

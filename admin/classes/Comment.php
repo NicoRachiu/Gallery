@@ -1,6 +1,6 @@
 <?php
-
-class Comment extends DB_object
+include("DB_Object.php");
+class Comment extends DB_Object
 {
     protected static $db_table = "comments";
     protected static $db_table_fields = ['photo_id', 'author', 'id', 'body',];

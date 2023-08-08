@@ -1,6 +1,9 @@
 <?php include("includes/header.php"); ?>
-
-<?php if (!$session->is_signed_in()) {
+<?php include("classes/Session.php");   ?>
+<?php
+$session = new Session(); ?>
+<?php
+if (!$session->is_signed_in()) {
     redirect("login.php");
 }  ?>
 <!-- Navigation -->

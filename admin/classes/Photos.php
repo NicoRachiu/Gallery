@@ -1,5 +1,6 @@
 <?php
-class Photos extends DB_object
+include("DB_Object.php");
+class Photos extends DB_Object
 {
     public $id;
     public $title;
