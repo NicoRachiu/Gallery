@@ -1,6 +1,6 @@
 <?php
 
-include("includes/init.php");
+include("init.php");
 
 // Verifica se l'utente ha effettuato l'accesso
 if (!$session->is_signed_in()) {
@@ -13,7 +13,7 @@ if (empty($_GET['id'])) {
 }
 
 // Cerca la foto con l'ID specificato
-$photo = Photo::find_all_users_by_id($_GET['id']);
+$photo = Photos::find_all_users_by_id($_GET['id']);
 
 // Se la foto esiste, eliminala e reindirizza l'utente alla pagina delle foto
 if ($photo) {

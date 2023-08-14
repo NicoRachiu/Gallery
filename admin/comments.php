@@ -1,6 +1,6 @@
 <?php
 
-include("includes/header.php");
+include("header.php");
 
 // Verifica se l'utente ha effettuato l'accesso
 if (!$session->is_signed_in()) {
@@ -12,10 +12,10 @@ if (!$session->is_signed_in()) {
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <?php include("includes/top_nav.php") ?>
+    <?php include("top_nav.php") ?>
 
     <!-- Top Menu Items -->
-    <?php include("includes/side_nav.php") ?>
+    <?php include("side_nav.php") ?>
 </nav>
 
 <div id="page-wrapper">
@@ -60,4 +60,4 @@ if (!$session->is_signed_in()) {
     </div>
 </div>
 
-<?php include("includes/footer.php"); ?>
+<?php include("footer.php"); ?>

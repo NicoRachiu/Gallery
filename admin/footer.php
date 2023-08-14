@@ -1,6 +1,4 @@
   </div>
-  <?php
-    include("classes/Session.php"); ?>
   <!-- /#wrapper -->
 
   <!-- jQuery -->
@@ -22,12 +20,11 @@
 
           var data = google.visualization.arrayToDataTable([
               ['Task', 'Hours per Day'],
-              ['Views', <?php $session = new Session;
-                        echo $session->count; ?>],
+              ['Views', <?php echo $session->count; ?>],
               ['Photo', <?php $photo = new Photos;
                         echo $photo->number_photo(); ?>],
               ['Users', <?php $user = new Users;
-                        echo $user->number_photo(); ?>],
+                        echo $users->number_photo(); ?>],
               ['Comments', <?php $comment = new Comment;
                             echo $comment->number_photo(); ?>],
 

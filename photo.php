@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include("admin/includes/header.php"); ?>
+<?php include("admin/header.php"); ?>
 <?php include("includes/navigation.php"); ?>
 <?php
 
@@ -30,6 +30,7 @@ $comments = Comment::find_the_comments($photo->id);
 
 ?>
 <html lang="en">
+
 <head>
     <meta charset="utf-12s">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,6 +53,7 @@ $comments = Comment::find_the_comments($photo->id);
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
     <!-- Page Content -->
     <div class="container">

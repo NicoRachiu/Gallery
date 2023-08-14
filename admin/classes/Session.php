@@ -1,5 +1,4 @@
 <?php
-
 class Session
 {
     public $user_id;

@@ -1,5 +1,4 @@
 <?php
-include("DB_Object.php");
 class Comment extends DB_Object
 {
     protected static $db_table = "comments";

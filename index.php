@@ -1,5 +1,5 @@
-<?php include("admin/includes/header.php"); ?>
-<?php include("admin/classes/Photos.php"); ?>
+<?php include("admin/header.php");
+?>
 <?php $photos = Photos::find_all(); ?>
 <div class="row">
 

@@ -1,4 +1,4 @@
-<?php include("includes/header.php"); ?>
+<?php include("header.php"); ?>
 <?php if (!$session->is_signed_in()) {
     redirect("login.php");
 }  ?>
@@ -12,7 +12,7 @@ if (empty($_GET['id'])) {
     redirect('photos.php');
     //echo 'ciao';
 } else {
-    $photo = Photo::find_all_users_by_id($_GET['id']);
+    $photo = Photos::find_all_users_by_id($_GET['id']);
 
     if (isset($_POST['update'])) {
 
@@ -32,10 +32,10 @@ if (empty($_GET['id'])) {
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-    <?php include("includes/top_nav.php") ?>
+    <?php include("top_nav.php") ?>
 
     <!-- Top Menu Items -->
-    <?php include("includes/side_nav.php") ?>
+    <?php include("side_nav.php") ?>
     <!-- /.navbar-collapse -->
 </nav>
 
@@ -131,4 +131,4 @@ if (empty($_GET['id'])) {
 </div>
 <!-- /#page-wrapper -->
 
-<?php include("includes/footer.php"); ?>
+<?php include("footer.php"); ?>
