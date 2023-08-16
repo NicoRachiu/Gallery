@@ -1,5 +1,5 @@
 <?php include("admin/includes/header.php"); ?>
-
+<?php $x = 0; ?>
 <?php $photos = Photo::find_all(); ?>
 <div class="row">
 
