@@ -1,6 +1,5 @@
 <?php require_once("header.php"); ?>
 <?php
-$session = new Session();
 if ($session->is_signed_in()) {
     redirect("index.php");
 }
