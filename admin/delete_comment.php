@@ -1,6 +1,6 @@
 <<?php
 
-    include("includes/init.php");
+    include("init.php");
 
     // Verifica se l'utente ha effettuato l'accesso
     if (!$session->is_signed_in()) {

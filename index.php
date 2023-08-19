@@ -1,6 +1,6 @@
-<?php include("admin/includes/header.php"); ?>
-
-<?php $photos = Photo::find_all(); ?>
+<?php include("admin/header.php");
+?>
+<?php $photos = Photos::find_all(); ?>
 <div class="row">
 
     <!-- Blog Entries Column -->

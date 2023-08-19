@@ -1,7 +1,5 @@
-<?php require_once("includes/header.php"); ?>
-
+<?php require_once("header.php"); ?>
 <?php
-
 if ($session->is_signed_in()) {
     redirect("index.php");
 }
