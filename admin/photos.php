@@ -37,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $photos = Photos::find_all(); ?>
+                            <?php $photos = Admin\Classes\Photos::find_all(); ?>
                             <?php foreach ($photos as $photo) :
                             ?>
                                 <tr>
@@ -55,7 +55,7 @@
                                     <td>
                                         <?php
 
-                                        $comments = Comment::find_the_comments($photo->id);
+                                        $comments = Admin\Classes\Comment::find_the_comments($photo->id);
                                         echo count($comments);
 
 

@@ -40,7 +40,7 @@
                                     <i class="fa fa-photo fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php $photos = new Photos;
+                                    <div class="huge"><?php $photos = new Admin\Classes\Photos;
                                                         echo $photos->number_photo(); ?></div>
                                     <div>Photos</div>
                                 </div>
@@ -65,7 +65,7 @@
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php $users = new Users;
+                                    <div class="huge"><?php $users = new Admin\Classes\Users;
                                                         echo $users->number_photo(); ?>
 
                                     </div>
@@ -92,7 +92,7 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php $comments = new Comment;
+                                    <div class="huge"><?php $comments = new Admin\Classes\Comment;
                                                         echo $comments->number_photo(); ?></div>
                                     <div>Comments</div>
                                 </div>

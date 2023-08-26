@@ -9,7 +9,7 @@ if (empty($_GET['id'])) {
     redirect('users.php');
 }
 
-$photo = Users::find_all_users_by_id($_GET['id']);
+$photo = Admin\Classes\Users::find_all_users_by_id($_GET['id']);
 
 if ($photo) {
     $photo->delete();

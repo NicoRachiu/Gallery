@@ -6,7 +6,7 @@ class UrlBuilder
     {
         $pathInfo = pathinfo($_SERVER['PHP_SELF']);
         $protocol = stripos($_SERVER["SERVER_PROTOCOL"], 'https') === 0 ? 'https' : 'http';
-        $baseUrl = $protocol.'://'.$_SERVER['HTTP_HOST'].$pathInfo['dirname'].'/';
+        $baseUrl = $protocol . '://' . $_SERVER['HTTP_HOST'] . $pathInfo['dirname'] . '/';
 
         return str_replace('/admin/', '/', $baseUrl);
     }

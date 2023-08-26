@@ -38,7 +38,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $users = Users::find_all(); ?>
+                            <?php $users = Admin\Classes\Users::find_all(); ?>
                             <?php foreach ($users as $user) :
                             ?>
                                 <tr>

@@ -1,4 +1,7 @@
 <?php
+
+namespace Admin\Classes;
+
 class Database
 {
     public $connection;
@@ -19,7 +22,7 @@ class Database
     public function open_db_connection()
     {
         //$this->connection = mysqli_connect(DB_HOST, DB_USER, DB_PAS, DB_NAME);
-        $this->connection = new mysqli(DB_HOST, DB_USER, DB_PAS, DB_NAME);
+        $this->connection = new \mysqli(DB_HOST, DB_USER, DB_PAS, DB_NAME);
 
         if ($this->connection->connect_errno) {
             die("failed" . $this->connection->connect_error);

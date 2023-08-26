@@ -39,7 +39,7 @@ if (!$session->is_signed_in()) {
                         </thead>
                         <tbody>
 
-                            <?php $comments = comment::find_all(); ?>
+                            <?php $comments = Admin\Classes\Comment::find_all(); ?>
                             <?php foreach ($comments as $comment) : ?>
 
                                 <tr>

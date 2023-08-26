@@ -1,4 +1,7 @@
 <?php
+
+namespace Admin\Classes;
+
 class Session
 {
     public $user_id;

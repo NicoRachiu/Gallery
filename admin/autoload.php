@@ -1,10 +1,12 @@
 <?php
 
-spl_autoload_register(function ($class) {
-    // /home/vioreleremia/Projects/Nicu/Gallery/admin/classes/Database.php
-    $classFilePath = __DIR__ . DS . 'classes' . DS . $class . '.php';
+namespace Admin\Classes; // aggiungi la dichiarazione del namespace
 
-    if (file_exists($classFilePath)) {
-        require_once($classFilePath);
+spl_autoload_register(function ($class) {
+    $class = str_replace('Admin\Classes\\', '', $class);
+    $classFilePath = __DIR__ . DS . 'Classes' . DS . $class . '.php';
+
+    if (\file_exists($classFilePath)) { // usa il backslash per il namespace globale
+        require_once($classFilePath); // usa il backslash per il namespace globale
     }
 });

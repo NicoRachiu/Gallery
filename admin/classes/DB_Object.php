@@ -1,5 +1,7 @@
 <?php
 
+namespace Admin\Classes;
+
 class DB_Object
 {
     protected static $db_table;
