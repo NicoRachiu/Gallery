@@ -1,4 +1,7 @@
 <?php
+
+namespace Admin\Classes;
+
 class Photos extends DB_Object
 {
     public $id;
