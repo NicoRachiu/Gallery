@@ -9,5 +9,8 @@ include('autoload.php');
 
 global $database, $session;
 
+use Admin\Classes\Database;
+use Admin\Classes\Session;
+
 $database = new Database();
 $session  = new Session();

@@ -1,5 +1,7 @@
-<?php include("admin/header.php");
-?>
+<?php include("Admin/header.php"); ?>
+<?php
+
+use Admin\Classes\Photos; ?>
 <?php $photos = Photos::find_all(); ?>
 <div class="row">
     <!-- Blog Entries Column -->

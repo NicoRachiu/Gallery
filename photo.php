@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<?php include("admin/header.php"); ?>
+<?php include("Admin/header.php"); ?>
 <?php include("includes/navigation.php"); ?>
+
+<?php
+
+use Admin\Classes\Comment;
+use Admin\Classes\Photos; ?>
+
 <?php
 
 if (empty($_GET['id'])) {

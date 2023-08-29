@@ -13,7 +13,7 @@
     }
 
     // Cerca il commento con l'ID specificato
-    $comment = Comment::find_all_users_by_id($_GET['id']);
+    $comment = Admin\Classes\Comment::find_all_users_by_id($_GET['id']);
 
     // Se il commento esiste, eliminalo e reindirizza l'utente alla pagina dei commenti
     if ($comment) {

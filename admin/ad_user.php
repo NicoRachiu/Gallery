@@ -5,7 +5,7 @@
 <!-- Navigation -->
 <?php
 
-$user = new Users;
+$user = new Admin\Classes\Users;
 
 if (isset($_POST['update'])) {
     if ($user) {

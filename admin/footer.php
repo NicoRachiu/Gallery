@@ -21,11 +21,11 @@
           var data = google.visualization.arrayToDataTable([
               ['Task', 'Hours per Day'],
               ['Views', <?php echo $session->count; ?>],
-              ['Photo', <?php $photo = new Photos;
+              ['Photo', <?php $photo = new Admin\Classes\Photos;
                         echo $photo->number_photo(); ?>],
-              ['Users', <?php $user = new Users;
-                        echo $users->number_photo(); ?>],
-              ['Comments', <?php $comment = new Comment;
+              ['Users', <?php $user = new Admin\Classes\Users;
+                        echo $photo->number_photo(); ?>],
+              ['Comments', <?php $comment = new Admin\Classes\Comment;
                             echo $comment->number_photo(); ?>],
 
           ]);

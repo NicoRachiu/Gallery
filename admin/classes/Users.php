@@ -1,4 +1,7 @@
 <?php
+
+namespace Admin\Classes;
+
 class Users extends DB_Object
 {
     protected static $db_table_fields = ['username', 'password', 'first_name', 'last_name', 'user_image',];

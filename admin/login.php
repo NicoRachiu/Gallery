@@ -1,5 +1,8 @@
 <?php require_once("header.php"); ?>
 <?php
+
+//use Admin\Classes\Users;
+
 if ($session->is_signed_in()) {
     redirect("index.php");
 }
@@ -10,7 +13,7 @@ if (isset($_POST['submit'])) {
     $password = trim($_POST['password']);
 
     //Method to check database user
-    $user_found = Users::verify_user($username, $password);
+    $user_found = Admin\Classes\Users::verify_user($username, $password);
 
     if ($user_found) {
 

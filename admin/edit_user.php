@@ -2,6 +2,9 @@
 <?php if (!$session->is_signed_in()) {
     redirect("login.php");
 }  ?>
+<?php
+
+use Admin\Classes\Users; ?>
 <!-- Navigation -->
 <?php
 if (empty($_GET['id'])) {
@@ -32,10 +35,10 @@ if (isset($_POST['update'])) {
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-    <?php include("includes/top_nav.php") ?>
+    <?php include("top_nav.php") ?>
 
     <!-- Top Menu Items -->
-    <?php include("includes/side_nav.php") ?>
+    <?php include("side_nav.php") ?>
     <!-- /.navbar-collapse -->
 </nav>
 

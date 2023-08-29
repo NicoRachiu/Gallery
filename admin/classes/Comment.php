@@ -1,4 +1,7 @@
 <?php
+
+namespace Admin\Classes;
+
 class Comment extends DB_Object
 {
     protected static $db_table = "comments";

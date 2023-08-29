@@ -13,7 +13,7 @@ if (empty($_GET['id'])) {
 }
 
 // Cerca la foto con l'ID specificato
-$photo = Photos::find_all_users_by_id($_GET['id']);
+$photo = Admin\Classes\Photos::find_all_users_by_id($_GET['id']);
 
 // Se la foto esiste, eliminala e reindirizza l'utente alla pagina delle foto
 if ($photo) {

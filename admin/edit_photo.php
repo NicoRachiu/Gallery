@@ -12,7 +12,7 @@ if (empty($_GET['id'])) {
     redirect('photos.php');
     //echo 'ciao';
 } else {
-    $photo = Photos::find_all_users_by_id($_GET['id']);
+    $photo = Admin\Classes\Photos::find_all_users_by_id($_GET['id']);
 
     if (isset($_POST['update'])) {
 

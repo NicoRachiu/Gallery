@@ -7,7 +7,7 @@
 
 if (isset($_POST['submit'])) {
 
-    $photo = new Photos();
+    $photo = new Admin\Classes\Photos();
 
     $photo->title = $_POST['title'];
     $photo->set_file($_FILES['file_upload']);

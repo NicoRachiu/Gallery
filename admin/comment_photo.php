@@ -5,7 +5,7 @@
 <?php if (empty($_GET['id'])) {
     redirect('photos.php');
 }
-$comments = Comment::find_the_comments($_GET['id']); ?>
+$comments = Admin\Classes\Comment::find_the_comments($_GET['id']); ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,7 +39,7 @@ $comments = Comment::find_the_comments($_GET['id']); ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $comments = Comment::find_the_comments($_GET['id']);  ?>
+                            <?php $comments = Admin\Classes\Comment::find_the_comments($_GET['id']);  ?>
                             <?php foreach ($comments as $comment) :
                             ?>
                                 <tr>
