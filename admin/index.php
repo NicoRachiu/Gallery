@@ -19,5 +19,14 @@ if (!$session->is_signed_in()) {
     ?>
 </div>
 <!-- /#page-wrapper -->
-
+<?php
+$template = new Template();
+$template::view(
+    'about.html',
+    [
+        'title' => 'Home Page',
+        'colors' => ['red', 'blue', 'green']
+    ]
+);
+?>
 <?php include("footer.php"); ?>
