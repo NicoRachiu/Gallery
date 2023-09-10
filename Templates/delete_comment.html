@@ -13,13 +13,13 @@
     }
 
     // Cerca il commento con l'ID specificato
-    $comment = Admin\Classes\Comment::find_all_users_by_id($_GET['id']);
+    $comment = Comment::find_all_users_by_id($_GET['id']);
 
     // Se il commento esiste, eliminalo e reindirizza l'utente alla pagina dei commenti
     if ($comment) {
         $comment->delete();
-        redirect("comments.php");
+        redirect("comments");
     } else {
         // Altrimenti, reindirizza l'utente alla pagina dei commenti
-        redirect('comments.php');
+        redirect('comments');
     }

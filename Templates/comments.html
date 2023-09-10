@@ -1,10 +1,9 @@
-<?php
+{% extends header.html %}
 
-include("header.php");
 
 // Verifica se l'utente ha effettuato l'accesso
 if (!$session->is_signed_in()) {
-    redirect("login.php");
+redirect("login.php");
 }
 
 ?>
@@ -12,10 +11,10 @@ if (!$session->is_signed_in()) {
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <?php include("top_nav.php") ?>
+    {% extends top_nav.html %}
 
     <!-- Top Menu Items -->
-    <?php include("side_nav.php") ?>
+    {% extends side_nav.html %}
 </nav>
 
 <div id="page-wrapper">
@@ -38,20 +37,17 @@ if (!$session->is_signed_in()) {
                             </tr>
                         </thead>
                         <tbody>
-
-                            <?php $comments = Admin\Classes\Comment::find_all(); ?>
-                            <?php foreach ($comments as $comment) : ?>
-
-                                <tr>
-                                    <td><?php echo $comment->id; ?></td>
-                                    <td><?php echo $comment->body; ?></td>
-                                    <td><?php echo $comment->author; ?>
-                                        <div class="actions_links">
-                                            <a href="delete_comment.php?id=<?php echo $comment->id; ?>">Delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                            {% foreach ($comments as $comment) : %}
+                            <tr>
+                                <td>{{ $comment->id; }}</td>
+                                <td>{{ $comment->body; }}</td>
+                                <td>{{ $comment->author; }}
+                                    <div class="actions_links">
+                                        <a href="delete_comment.php?id={{ $comment->id; }}">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endforeach; %}
                         </tbody>
                     </table>
                 </div>
@@ -60,4 +56,4 @@ if (!$session->is_signed_in()) {
     </div>
 </div>
 
-<?php include("footer.php"); ?>
+{% extends footer.html %}

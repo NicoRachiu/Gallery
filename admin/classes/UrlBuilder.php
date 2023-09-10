@@ -1,5 +1,7 @@
 <?php
 
+namespace Admin\Classes;
+
 class UrlBuilder
 {
     public function getBaseUrl(): string

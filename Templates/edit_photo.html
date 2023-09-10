@@ -1,34 +1,4 @@
-<?php include("header.php"); ?>
-<?php if (!$session->is_signed_in()) {
-    redirect("login.php");
-}  ?>
-<!-- Navigation -->
-<?php
-if (isset($_POST['update'])) {
-    echo "IT WORKS!!!";
-}
-
-if (empty($_GET['id'])) {
-    redirect('photos.php');
-    //echo 'ciao';
-} else {
-    $photo = Admin\Classes\Photos::find_all_users_by_id($_GET['id']);
-
-    if (isset($_POST['update'])) {
-
-        if ($photo) {
-
-            $photo->title = $_POST['title'];
-            $photo->caption = $_POST['caption'];
-            $photo->alternative_text = $_POST['alternative_text'];
-            $photo->description = $_POST['description'];
-            $photo->save();
-            $photo->update();
-        }
-    }
-}
-
-?>
+{% extends header.php %}
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
@@ -57,27 +27,32 @@ if (empty($_GET['id'])) {
 
                                 <div class="form-group">
 
-                                    <input type="text" name="title" class="form-control " value="<?php echo $photo->title; ?>">
+                                    <input type="text" name="title" class="form-control " value="{{ $title }}">
 
                                 </div>
 
                                 <div class="form-group">
 
-                                    <a class="thumbnail" href="#"><img src="<?php echo $photo->picture_path(); ?>" alt=""></img></a>
+                                    <a class="thumbnail" href="#"><img src="{{ $picture_photo }}" alt=""></img></a>
 
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label for="caption">Caption</label> <input type="text" name="caption" class="form-control" value="<?php echo $photo->caption; ?>">
+                                    <label for="caption">Caption</label> <input type="text" name="caption"
+                                        class="form-control" value="{{ $caption }}">
 
 
 
-                                    <div class="form-group"> <label for="caption">Alternate Text</label> <input type="text" name="alternative_text" class="form-control" value="<?php echo $photo->alternative_text; ?>">
+                                    <div class="form-group"> <label for="caption">Alternate Text</label> <input
+                                            type="text" name="alternative_text" class="form-control"
+                                            value="{{ $alternative_text }}">
 
                                         <div class="form-group">
 
-                                            <label for="caption">Description</label> <textarea class="form-control" name="description" id="summernote" cols="30" rows="10"><?php echo $photo->description; ?></textarea>
+                                            <label for="caption">Description</label> <textarea class="form-control"
+                                                name="description" id="summernote" cols="30"
+                                                rows="10">{{ $description }}</textarea>
 
                                         </div>
 
@@ -88,19 +63,21 @@ if (empty($_GET['id'])) {
                             <div class="col-md-4">
                                 <div class="photo-info-box">
                                     <div class="info-box-header">
-                                        <h4>Save <span id="toggle" class="glyphicon glyphicon-menu-up pull-right"></span></h4>
+                                        <h4>Save <span id="toggle"
+                                                class="glyphicon glyphicon-menu-up pull-right"></span></h4>
                                     </div>
 
                                     <div class="inside">
                                         <div class="box-inner">
                                             <p class="text">
-                                                <span class="glyphicon glyphicon-calendar"></span> Uploaded on: April 22, 2030 @ 5:26
+                                                <span class="glyphicon glyphicon-calendar"></span> Uploaded on: April
+                                                22, 2030 @ 5:26
                                             </p>
                                             <p class="text ">
                                                 Photo Id: <span class="data photo_id_box">34</span>
                                             </p>
                                             <p class="text">
-                                                Filename: <span class="data"><?php echo $photo->title; ?></span>
+                                                Filename: <span class="data">{{ $ title }}</span>
                                             </p>
                                             <p class="text">
                                                 File Type: <span class="data">JPG</span>
@@ -111,11 +88,12 @@ if (empty($_GET['id'])) {
                                         </div>
                                         <div class="info-box-footer clearfix">
                                             <div class="info-box-delete pull-left">
-                                                <a href="delete_photo.php?id=<?php echo $photo->id;
-                                                                                ?>" class="btn btn-danger btn-lg ">Delete</a>
+                                                <a href="delete_photo.html?id={{ $id }}"
+                                                    class="btn btn-danger btn-lg ">Delete</a>
                                             </div>
                                             <div class="info-box-update pull-right ">
-                                                <input type="submit" name="update" value="Update" class="btn btn-primary btn-lg ">
+                                                <input type="submit" name="update" value="Update"
+                                                    class="btn btn-primary btn-lg ">
                                             </div>
                                         </div>
                                     </div>
@@ -131,4 +109,4 @@ if (empty($_GET['id'])) {
 </div>
 <!-- /#page-wrapper -->
 
-<?php include("footer.php"); ?>
+{% extends footer.php %}

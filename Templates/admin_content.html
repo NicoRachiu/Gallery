@@ -16,7 +16,7 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $session->count; ?></div>
+                                    <div class="huge">{{ $count }}</div>
                                     <div>New Views</div>
                                 </div>
                             </div>
@@ -40,8 +40,7 @@
                                     <i class="fa fa-photo fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php $photos = new Admin\Classes\Photos;
-                                                        echo $photos->number_photo(); ?></div>
+                                    <div class="huge">{{ $number_photo }}</div>
                                     <div>Photos</div>
                                 </div>
                             </div>
@@ -65,10 +64,9 @@
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php $users = new Admin\Classes\Users;
-                                                        echo $users->number_photo(); ?>
+                                    <div class="huge">
 
-                                    </div>
+                                    </div>{{ $number_photo }}
 
                                     <div>Users</div>
                                 </div>
@@ -92,8 +90,7 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php $comments = new Admin\Classes\Comment;
-                                                        echo $comments->number_photo(); ?></div>
+                                    <div class="huge">{{ $number_comments }}</div>
                                     <div>Comments</div>
                                 </div>
                             </div>

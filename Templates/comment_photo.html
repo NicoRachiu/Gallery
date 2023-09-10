@@ -1,0 +1,61 @@
+{% extends header.html %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+
+    {% extends top_nav.html %}
+
+    <!-- Top Menu Items -->
+    {% extends side_nav.html %}
+    <!-- /.navbar-collapse -->
+</nav>
+
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    comment
+                    <small>Subheading</small>
+                </h1>
+
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Author</th>
+                                <th>Body</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% foreach ($comments as $comment) : %}
+                            ?>
+                            <tr>
+                                <td>{{ $comment->id }}</td>
+                                <td>
+                                    {{ $comment->body }}
+                                </td>
+                                <td> {{ $comment->author }}
+                                    <div class="actions_links">
+                                        <a href="delete_comment.html?id={{ $comment->id }}">Delete</a>
+                                </td>
+                            </tr>
+                            {% endforeach; %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+
+{% extends includes/footer.php" %}
