@@ -1,2 +1,5 @@
 /Admin/images
 .idea
+vendor
+cache
+.DS_Store

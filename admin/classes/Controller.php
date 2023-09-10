@@ -6,66 +6,46 @@ class Controller
 {
     public function index()
     {
-
-        $session = new Session();
+       global $session, $twig;
 
         if (!$session->is_signed_in()) {
             redirect("login");
         }
 
         $photos = Photos::find_all();
-        foreach ($photos as $photo) {
-        }
 
-        $template = new Template();
-        $template::view(
-            'Templates/index.html',
-            [
-                'Photo_id' => $photo->picture_path(),
-                'colors' => ['red', 'blue', 'green'],
-            ]
-        );
-
-        exit;
+        return $twig->render('index.html.twig', [
+            'photos'  => $photos
+        ]);
     }
 
     public function login()
     {
+        global $twig, $session;
+
+        $responseMessage = "";
+        $username        = "";
+        $password        = "";
+
         if (isset($_POST['submit'])) {
 
-            $username = trim($_POST['username']);
-            $password = trim($_POST['password']);
-
-            //Method to check database user
+            $username   = trim($_POST['username']);
+            $password   = trim($_POST['password']);
             $user_found = Users::verify_user($username, $password);
 
             if ($user_found) {
-
-                $session = new Session();
                 $session->login($user_found);
-                redirect("index");
+                redirect('/');
             } else {
-
-                $the_message = "Your password or username are incorrect";
+                $responseMessage = "Your password or username are incorrect";
             }
-        } else {
-            $the_message = "";
-            $username = "";
-            $password = "";
         }
 
-        $template = new Template();
-        $template::view(
-            'Templates/login.html',
-            [
-                'username' => $username,
-                'colors' => ['red', 'blue', 'green'],
-                'new_messgae' => $the_message,
-
-            ]
-        );
-
-        exit;
+        return $twig->render('login.html.twig', [
+            'username'        => $username,
+            'responseMessage' => $responseMessage,
+            'password'        => $password
+        ]);
     }
 }
 
@@ -264,37 +244,5 @@ function ad_user()
                 'id' => $user->id
             ]
         );
-    }
-    function autoload()
-    {
-        spl_autoload_register(function ($class) {
-            $class = str_replace('Admin\Classes\\', '', $class);
-            $classFilePath = __DIR__ . DS . 'Classes' . DS . $class . '.php';
-
-            if (\file_exists($classFilePath)) { // usa il backslash per il namespace globale
-                require_once($classFilePath); // usa il backslash per il namespace globale
-            }
-        });
-    }
-    function config()
-    {
-        define('DB_HOST', 'localhost');
-        define('DB_USER', 'root');
-        define('DB_PAS', '');
-        define('DB_NAME', 'gallery_db');
-    }
-    function functions()
-    {
-        function redirect($location)
-        {
-            header("Location: {$location}");
-        }
-
-        function enqueueAsset(string $path): void
-        {
-            $urlBuilder = new UrlBuilder();
-
-            echo $urlBuilder->getBaseUrl() . 'assets/' . $path;
-        }
     }
 }

@@ -1,5 +1,5 @@
 <?php
-include('Admin/init.php');
+include('Bootstrap.php');
 
 use Admin\Classes\Controller;
 use Admin\Classes\Router;
@@ -10,5 +10,6 @@ $controller = new Controller();
 // Index route
 $router->addRoute('GET', '/', [$controller, 'index']);
 $router->addRoute('GET', '/login', [$controller, 'login']);
+$router->addRoute('POST', '/login', [$controller, 'login']);
 
-$router->matchRoute();
+echo $router->matchRoute();
