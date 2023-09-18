@@ -2,14 +2,14 @@
   <!-- /#wrapper -->
 
   <!-- jQuery -->
-  <script src="<?php enqueueAsset('js/jquery.js'); ?>"></script>
+  <script src="js/jquery.js'"></script>
 
   <!-- Bootstrap Core JavaScript -->
-  <script src="<?php enqueueAsset('js/bootstrap.min.js'); ?>"></script>
+  <script src="js/bootstrap.min.js'"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-  <script src="<?php enqueueAsset('js/scripts.js'); ?>"></script>
+  <script src="js/scripts.js"></script>
   <script type="text/javascript">
       google.charts.load('current', {
           'packages': ['corechart']
@@ -20,11 +20,10 @@
 
           var data = google.visualization.arrayToDataTable([
               ['Task', 'Hours per Day'],
-              ['Views', <?php echo $session->count; ?>],
+              ['Views', {{ count }}],
               ['Photo', <?php $photo = new Admin\Classes\Photos;
                         echo $photo->number_photo(); ?>],
-              ['Users', <?php $user = new Admin\Classes\Users;
-                        echo $photo->number_photo(); ?>],
+              ['Users', {{ user }}],
               ['Comments', <?php $comment = new Admin\Classes\Comment;
                             echo $comment->number_photo(); ?>],
 

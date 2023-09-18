@@ -1,10 +1,10 @@
-{% extends header.php %}
-
+{% extends 'base.html.twig' %}
+{% include 'header.html' %}
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-    {% extends top_nav.php %}
-    {% extend side_nav.php %}
+    {% include 'top_nav.html' %}
+    {% include 'side_nav.html' %}
     <!-- Top Menu Items -->
     <!-- /.navbar-collapse -->
 </nav>
@@ -59,4 +59,4 @@
     <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
-{% extends footer.php %}
+{% extends 'footer.html' %}

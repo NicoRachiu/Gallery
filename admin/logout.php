@@ -1,4 +1,4 @@
-<?php require_once("header.php"); ?>
+<?php require_once("../Templates/header.html.twig"); ?>
 
 <?php
 $session->logout();

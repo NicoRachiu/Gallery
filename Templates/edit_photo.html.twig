@@ -1,11 +1,12 @@
-{% extends header.php %}
+{% extends 'base.html.twig' %}
+{% include 'header.html' %}
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-    <?php include("top_nav.php") ?>
+    {% include 'top_nav.html' %}
 
     <!-- Top Menu Items -->
-    <?php include("side_nav.php") ?>
+    {% include 'side_nav.html' %}
     <!-- /.navbar-collapse -->
 </nav>
 
@@ -27,7 +28,7 @@
 
                                 <div class="form-group">
 
-                                    <input type="text" name="title" class="form-control " value="{{ $title }}">
+                                    <input type="text" name="title" class="form-control " value="{{ title }}">
 
                                 </div>
 
@@ -46,13 +47,13 @@
 
                                     <div class="form-group"> <label for="caption">Alternate Text</label> <input
                                             type="text" name="alternative_text" class="form-control"
-                                            value="{{ $alternative_text }}">
+                                            value="{{ alternative_text }}">
 
                                         <div class="form-group">
 
                                             <label for="caption">Description</label> <textarea class="form-control"
                                                 name="description" id="summernote" cols="30"
-                                                rows="10">{{ $description }}</textarea>
+                                                rows="10">{{ description }}</textarea>
 
                                         </div>
 
@@ -77,7 +78,7 @@
                                                 Photo Id: <span class="data photo_id_box">34</span>
                                             </p>
                                             <p class="text">
-                                                Filename: <span class="data">{{ $ title }}</span>
+                                                Filename: <span class="data">{{ title }}</span>
                                             </p>
                                             <p class="text">
                                                 File Type: <span class="data">JPG</span>
@@ -88,7 +89,7 @@
                                         </div>
                                         <div class="info-box-footer clearfix">
                                             <div class="info-box-delete pull-left">
-                                                <a href="delete_photo.html?id={{ $id }}"
+                                                <a href="../Admin/delete_photo.php?id={{ id }}"
                                                     class="btn btn-danger btn-lg ">Delete</a>
                                             </div>
                                             <div class="info-box-update pull-right ">
@@ -109,4 +110,4 @@
 </div>
 <!-- /#page-wrapper -->
 
-{% extends footer.php %}
+{% include 'footer.html' %}

@@ -5,14 +5,17 @@ namespace Admin\Classes;
 use Closure;
 use Exception;
 
-class Router {
+class Router
+{
     protected $routes = []; // stores routes
 
-    public function addRoute(string $method, string $url, array $target) {
+    public function addRoute(string $method, string $url, array $target)
+    {
         $this->routes[$method][$url] = $target;
     }
 
-    public function matchRoute() {
+    public function matchRoute()
+    {
         $method = $_SERVER['REQUEST_METHOD'];
         $url = $_SERVER['REQUEST_URI'];
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include("Admin/header.php"); ?>
+<?php include("Templates/header.html.twig"); ?>
 <?php include("includes/navigation.php"); ?>
 
 <?php

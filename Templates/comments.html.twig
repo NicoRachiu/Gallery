@@ -1,25 +1,22 @@
-{% extends header.html %}
+{% extends 'base.html.twig' %}
+{% include 'header.html' %}
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
-
-    {% extends top_nav.html %}
+    {% include 'top_nav.html' %}
 
     <!-- Top Menu Items -->
-    {% extends side_nav.html %}
-    <!-- /.navbar-collapse -->
+    {% include 'side_nav.html' %}
 </nav>
 
 <div id="page-wrapper">
-
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    comment
+                    Comment
                     <small>Subheading</small>
                 </h1>
 
@@ -27,22 +24,20 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <th>Id</th>
                                 <th>Author</th>
                                 <th>Body</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% foreach ($comments as $comment) : %}
-                            ?>
                             <tr>
-                                <td>{{ $comment->id }}</td>
-                                <td>
-                                    {{ $comment->body }}
-                                </td>
-                                <td> {{ $comment->author }}
+                                <td>{{ comment.id; }}</td>
+                                <td>{{ comment.body; }}</td>
+                                <td>{{ comment.author; }}
                                     <div class="actions_links">
-                                        <a href="delete_comment.html?id={{ $comment->id }}">Delete</a>
+                                        <a href="delete_comment.php?id={{ comment.id; }}">Delete</a>
+                                    </div>
                                 </td>
                             </tr>
                             {% endforeach; %}
@@ -51,11 +46,7 @@
                 </div>
             </div>
         </div>
-        <!-- /.row -->
-
     </div>
-    <!-- /.container-fluid -->
 </div>
-<!-- /#page-wrapper -->
 
-{% extends includes/footer.php" %}
+{% include 'footer.html' %}

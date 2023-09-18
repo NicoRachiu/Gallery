@@ -1,19 +1,4 @@
-<?php include("header.php"); ?>
-
-<?php if (!$session->is_signed_in()) {
-    redirect("login.php");
-}  ?>
-<?php
-
-if (isset($_POST['submit'])) {
-
-    $photo = new Admin\Classes\Photos();
-
-    $photo->title = $_POST['title'];
-    $photo->set_file($_FILES['file_upload']);
-}
-
-?>
+{% include "header.php" %}
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->

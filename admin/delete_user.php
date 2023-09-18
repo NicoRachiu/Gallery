@@ -1,4 +1,4 @@
-<?php include("init.php"); ?>
+<?php include("../Bootstrap.php"); ?>
 <?php if (!$session->is_signed_in()) {
     redirect("login.php");
 }  ?>
