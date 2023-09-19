@@ -52,7 +52,6 @@ class Controller
     function ad_user()
     {
         global $twig, $session;
-        $session = new Session();
         if (!$session->is_signed_in()) {
             redirect("login");
         }
