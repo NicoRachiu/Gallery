@@ -5,10 +5,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-    {% include "top_nav.php" %}
+    {% include "top_nav.hmtl.twig" %}
 
     <!-- Top Menu Items -->
-    {% include "side_nav.php" %}
+    {% include "side_nav.html.twig" %}
     <!-- /.navbar-collapse -->
 </nav>
 
@@ -45,8 +45,8 @@
                                 </td>
                                 <td> user.username
                                     <div class="actions_links">
-                                        <a href="delete_user.php?id={{ user.id }}">Delete</a>
-                                        <a href="edit_user.php?id= {{ user.id }}">Edit</a>
+                                        <a href="../Admin/delete_user.php?id={{ user.id }}">Delete</a>
+                                        <a href="../Admin/edit_user.php?id= {{ user.id }}">Edit</a>
                                     </div>
                                 </td>
 

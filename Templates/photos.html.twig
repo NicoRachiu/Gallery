@@ -3,10 +3,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-   {% include "top_nav.php" %}
+   {% include "top_nav.html.twig" %}
 
     <!-- Top Menu Items -->
-    {%  include "side_nav.php" %}
+    {%  include "side_nav.html.twig" %}
     <!-- /.navbar-collapse -->
 </nav>
 
@@ -51,12 +51,12 @@
                                     <td>
                                         <?php
 
-                                        {% set $comments = Admin\Classes\Comment::find_the_comments($photo->id) %}
+                                        {% set $comments = Admin\Classes\Comment::find_the_comments($photo.id) %}
                                         {% echo count($comments); %}
 
 
                                         ?>
-                                        <a href="comment_photo.php?id={{ $photo.id }}">Comments</a>
+                                        <a href="comment_photo.html.twig?id={{ photo.id }}">Comments</a>
                                     </td>
                                 </tr>
                             {% endforeach %}
@@ -73,4 +73,4 @@
 </div>
 <!-- /#page-wrapper -->
 
-{% include "footer.php" %}
+{% include "footer.html.twig" %}
