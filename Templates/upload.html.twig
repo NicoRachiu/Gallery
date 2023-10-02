@@ -1,12 +1,13 @@
-{% include "header.php" %}
+{% extends "header.html.twig" %}
+{% block upload %}
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-    <?php include("top_nav.php") ?>
+    {% include "top_nav.html.twig" %}
 
     <!-- Top Menu Items -->
-    <?php include("side_nav.php") ?>
+    {% include "side_nav.html.twig" %}
     <!-- /.navbar-collapse -->
 </nav>
 
@@ -40,5 +41,4 @@
     <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
-
-{% include 'footer.html.twig' %}
+{% endblock %}

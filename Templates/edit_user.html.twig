@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% include 'header.html' %}
+{% block edit_user %}
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
@@ -60,7 +60,7 @@
                                                 class="btn btn-primary btn-lg ">
                                         </div>
                                         <div class="info-box-delete pull-left">
-                                            <a href="../Admin/delete_users.php?id={{ $id }}"
+                                            <a href="../Admin/delete_users.html.twig?id={{ id }}"
                                                 class="btn btn-danger btn-lg ">Delete</a>
                                         </div>
                 </form>
@@ -71,4 +71,5 @@
     </div>
     <!-- /.container-fluid -->
 </div>
+{% endblock %}
 <!-- /#page-wrapper -->

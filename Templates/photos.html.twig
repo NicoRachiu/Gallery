@@ -1,4 +1,5 @@
-{% include "header.php" %}
+{% extends "base.html.twig" %}
+{% block photos %}
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -34,7 +35,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% foreach ($photos as $photo) : %}
+                            {% for photos as photo : %}
                             ?>
                                 <tr>
                                     <td><img src="<?php echo $photo->picture_path(); ?> " width="150">
@@ -59,7 +60,7 @@
                                         <a href="comment_photo.html.twig?id={{ photo.id }}">Comments</a>
                                     </td>
                                 </tr>
-                            {% endforeach %}
+                            {% endfor %}
 
                         </tbody>
                     </table>
@@ -72,5 +73,4 @@
     <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->
-
-{% include "footer.html.twig" %}
+{% endblock %}

@@ -28,7 +28,6 @@
         <![endif]-->
         <link href="/assets/css/styles.css" rel="stylesheet">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    {% endblock %}
 </head>
 <body>
 
@@ -37,6 +36,16 @@
     {% block top_nav %}{% endblock %}
     {% block login %}{% endblock %}
     {% block dashboard %} {% endblock %}
+    {% block ad_user %}{% endblock %}
+    {% block side_nav %}{% endblock %}
+    {% block users %}{% endblock %}
+    {% block upload %}{% endblock %}
+    {% block index %}{% endblock %}
+    {% block edit_user %}{% endblock %}
+    {% block edit_photo %}{% endblock %}
+    {% block comments_html %}{% endblock %}
+    {% block comments_photo %}{% endblock %}
+    {% block admin_content %}{% endblock %}
     <hr>
     <footer>
         <div class="row">
@@ -50,3 +59,4 @@
     <script src="/assets/js/bootstrap.min.js"></script>
 </body>
 </html>
+{% endblock %}

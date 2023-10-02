@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block admin_content %}
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -17,7 +18,7 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ $count }}</div>
+                                    <div class="huge">{{ count }}</div>
                                     <div>New Views</div>
                                 </div>
                             </div>
@@ -67,7 +68,7 @@
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
 
-                                    </div>{{ $number_photo }}
+                                    </div>{{ number_photo }}
 
                                     <div>Users</div>
                                 </div>
@@ -115,3 +116,4 @@
     <!-- /.row -->
 </div>
 <!-- /.container-fluid -->
+{% endblock %}

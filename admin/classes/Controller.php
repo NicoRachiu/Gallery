@@ -19,35 +19,6 @@ class Controller
         ]);
     }
 
-    public function login()
-    {
-        global $twig, $session;
-
-        $responseMessage = "";
-        $username        = "";
-        $password        = "";
-
-        if (isset($_POST['submit'])) {
-
-            $username   = trim($_POST['username']);
-            $password   = trim($_POST['password']);
-            $user_found = Users::verify_user($username, $password);
-
-            if ($user_found) {
-                $session->login($user_found);
-                redirect('/');
-            } else {
-                $responseMessage = "Your password or username are incorrect";
-            }
-        }
-
-        return $twig->render('login.html.twig', [
-            'username'        => $username,
-            'responseMessage' => $responseMessage,
-            'password'        => $password
-        ]);
-    }
-
 
     function ad_user()
     {
@@ -71,14 +42,15 @@ class Controller
         }
     }
 
+
     function admin_content()
     {
         global $twig, $session;
-        $session = new Session();
         $photos = new Photos;
         $comments = new Comment;
         return $twig->render('admin_content.html.twig', []);
     }
+
 
     function comment_photo()
     {
@@ -90,14 +62,17 @@ class Controller
         return $twig->render('comment_photo.html.twig', []);
     }
 
+
     function comments()
     {
-        $session = new Session();
+        global $session;
         if (!$session->is_signed_in()) {
             redirect("login");
         }
         $comments = Comment::find_all();
     }
+
+
     function delete_comment()
     {
         $session = new Session;
@@ -116,6 +91,8 @@ class Controller
             redirect('comments');
         }
     }
+
+
     function delete_photo()
     {
         $session = new Session();
@@ -138,6 +115,8 @@ class Controller
             redirect('photos');
         }
     }
+
+
     function delete_user()
     {
         global $twig;
@@ -158,6 +137,8 @@ class Controller
             redirect('users');
         }
     }
+
+
     function edit_photo()
     {
         global $twig;
@@ -190,45 +171,51 @@ class Controller
         }
         return $twig->render('edit_photo.html.twig', []);
     }
-}
-function edit_user()
-{
-    global $twig;
-    $session = new Session();
-    if (!$session->is_signed_in()) {
-        redirect("login.php");
-    }
-    $user = Users::find_all_users_by_id($_GET['id']);
 
-    if (isset($_POST['update'])) {
-        if ($user) {
 
-            $user->username = $_POST['username'];
-            $user->first_name = $_POST['first_name'];
-            $user->last_name = $_POST['last_name'];
-            $user->password = $_POST['password'];
+    function edit_user()
+    {
+        global $twig;
+        $session = new Session();
+        if (!$session->is_signed_in()) {
+            redirect("login.php");
+        }
+        $user = Users::find_all_users_by_id($_GET['id']);
 
-            if (!empty($_FILES['user_image'])) {
-                $user->set_file($_FILES['user_image']);
-                $user->save_user_and_image();
+        if (isset($_POST['update'])) {
+            if ($user) {
+
+                $user->username = $_POST['username'];
+                $user->first_name = $_POST['first_name'];
+                $user->last_name = $_POST['last_name'];
+                $user->password = $_POST['password'];
+
+                if (!empty($_FILES['user_image'])) {
+                    $user->set_file($_FILES['user_image']);
+                    $user->save_user_and_image();
+                }
+
+                $user->update();
             }
+        }
+        $user = new Users;
+        return $twig->render('edit_user.html.twig', []);
+    }
 
-            $user->update();
+
+    function header()
+    {
+        ob_start();
+    }
+    function dashboard()
+    {
+        global $session;
+        if (!$session->is_signed_in()) {
+            redirect("login");
         }
     }
-    $user = new Users;
-    return $twig->render('edit_user.html.twig', []);
-}
-function header()
-{
-    ob_start();
-}
-function dashboard()
-{
-    global $session;
-    if (!$session->is_signed_in()) {
-        redirect("login");
-    }
+
+
     function footer()
     {
         global $twig, $session;
@@ -242,6 +229,8 @@ function dashboard()
             'comment' => $comment->number_photo(),
         ]);
     }
+
+
     function login()
     {
         global $session, $twig;
@@ -276,6 +265,8 @@ function dashboard()
             'password' => htmlentities($password),
         ]);
     }
+
+
     function photos()
     {
         global $session, $twig;
@@ -284,6 +275,8 @@ function dashboard()
         }
         $photos = Photos::find_all();
     }
+
+
     function upload()
     {
         global $session;
@@ -298,8 +291,40 @@ function dashboard()
             $photo->set_file($_FILES['file_upload']);
         }
     }
+
+
     function users()
     {
         $users = Users::find_all();
+    }
+    function photo()
+    {
+        global $twig;
+        if (empty($_GET['id'])) {
+            redirect("index.php");
+        }
+
+        $photo = Photos::find_all_users_by_id($_GET['id']);
+
+        if (isset($_POST['submit'])) {
+            $author = trim($_POST['author']);
+            $body = trim($_POST['body']);
+            $new_comment = Comment::create_comment($photo->id, $author, $body);
+
+            if ($new_comment && $new_comment->save() && $new_comment->update()) {
+                //$new_comment->update();
+                redirect("photo.php?id={$photo->id}");
+            } else {
+                $message = "something it's wrong at line photo.php:20";
+            }
+        } else {
+            $author = "";
+            $body = "";
+        }
+        $comments = Comment::find_the_comments($photo->id);
+        return $twig->render('photo.html.twig', [
+            'picture_path' => $photo->picture_path(),
+            'caption' => $photo->caption,
+        ]);
     }
 }

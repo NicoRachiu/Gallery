@@ -1,11 +1,11 @@
-{% include "header.html.twig" %}
-
+{% extends " base.html.twig" %}
+{% block users %}
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
 
-    {% include "top_nav.hmtl.twig" %}
+    {% include "top_nav.html.twig" %}
 
     <!-- Top Menu Items -->
     {% include "side_nav.html.twig" %}
@@ -36,14 +36,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% foreach ($users as $user) : %}
+                            {% for users as user : %}
                             ?>
                             <tr>
                                 <td>{{ user.id }}</td>
                                 <td><img class="user-image" src="{{ user.image_path_and_placeholder() }} ">
 
                                 </td>
-                                <td> user.username
+                                <td> {{ user.username }}
                                     <div class="actions_links">
                                         <a href="../Admin/delete_user.php?id={{ user.id }}">Delete</a>
                                         <a href="../Admin/edit_user.php?id= {{ user.id }}">Edit</a>
@@ -53,7 +53,7 @@
                                 <td> user.first_name</td>
                                 <td> user.last_name</td>
                             </tr>
-                            {% endforeach %}
+                            {% endfor %}
 
                         </tbody>
                     </table>
@@ -66,4 +66,4 @@
 </div>
 <!-- /#page-wrapper -->
 
-{% include "footer.php" %}
+{% endblock %}

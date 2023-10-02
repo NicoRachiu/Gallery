@@ -8,7 +8,7 @@
                 <div class="thumbnails row">
                     {% for photo in photos %}
                         <div class="col-xs-6 col-md-3">
-                            <a class="thumbnail" href="photo.php?id={{ photo.id }}">
+                            <a class="thumbnail" href="photo?id={{ photo.id }}">
                                 <img src="admin/{{ photo.picture_path() }}" alt="">
                                 </img>
                             </a>
