@@ -235,7 +235,7 @@ class Controller
     {
         global $session, $twig;
         if ($session->is_signed_in()) {
-            redirect("index.php");
+            redirect("/");
         }
 
         if (isset($_POST['submit'])) {
@@ -249,7 +249,7 @@ class Controller
             if ($user_found) {
 
                 $session->login($user_found);
-                redirect("index");
+                redirect("/");
             } else {
 
                 $the_message = "Your password or username are incorrect";

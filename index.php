@@ -8,7 +8,7 @@ $router     = new Router();
 $controller = new Controller();
 
 // Index route
-$router->addRoute('GET', '/index', [$controller, 'index']);
+$router->addRoute('GET', '/', [$controller, 'index']);
 $router->addRoute('POST', '/index', [$controller, 'index']);
 $router->addRoute('GET', '/login', [$controller, 'login']);
 $router->addRoute('POST', '/login', [$controller, 'login']);
