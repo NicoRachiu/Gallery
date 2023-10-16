@@ -1,4 +1,4 @@
-{% extends " base.html.twig" %}
+{% extends "base.html.twig" %}
 {% block users %}
 
 <!-- Navigation -->
@@ -36,8 +36,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for users as user : %}
-                            ?>
+                        
+                            {% for users in user %}
+                            
                             <tr>
                                 <td>{{ user.id }}</td>
                                 <td><img class="user-image" src="{{ user.image_path_and_placeholder() }} ">
@@ -50,8 +51,8 @@
                                     </div>
                                 </td>
 
-                                <td> user.first_name</td>
-                                <td> user.last_name</td>
+                                <td> { user.first_name }</td>
+                                <td> { user.last_name }</td>
                             </tr>
                             {% endfor %}
                             
