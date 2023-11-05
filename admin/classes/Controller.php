@@ -295,14 +295,16 @@ class Controller
     {
         $users = Users::find_all();
     }
-    function photo()
+
+    function photo(...$args)
     {
         global $twig;
-        if (empty($_GET['id'])) {
+
+        if (empty($args['id'])) {
             redirect("index.php");
         }
 
-        $photo = Photos::find_all_users_by_id($_GET['id']);
+        $photo = Photos::find_all_users_by_id($args['id']);
 
         if (isset($_POST['submit'])) {
             $author = trim($_POST['author']);
