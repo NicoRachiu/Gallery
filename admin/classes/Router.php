@@ -16,15 +16,24 @@ class Router
 
     public function matchRoute()
     {
-        $method = $_SERVER['REQUEST_METHOD'];
-        $url = $_SERVER['REQUEST_URI'];
+        $method       = $_SERVER['REQUEST_METHOD'];
+        $uriParts     = parse_url($_SERVER['REQUEST_URI']);
+        $currentRoute = $uriParts['path'];
 
         if (isset($this->routes[$method])) {
-            foreach ($this->routes[$method] as $routeUrl => $target) {
-                // Simple string comparison to see if the route URL matches the requested URL
-                if ($routeUrl === $url) {
-                    return call_user_func($target);
+            foreach ($this->routes[$method] as $route => $target) {
+
+                if ($route !== $currentRoute) {
+                    continue;
                 }
+
+                if (isset($uriParts['query'])) {
+                    parse_str($uriParts['query'], $queryVars);
+
+                    return call_user_func_array($target, $queryVars);
+                }
+
+                return call_user_func($target);
             }
         }
 
