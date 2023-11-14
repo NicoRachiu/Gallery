@@ -15,6 +15,7 @@ $router->addRoute('POST', '/login', [$controller, 'login']);
 $router->addRoute('POST', '/add_user', [$controller, 'add_user']);
 $router->addRoute('GET', '/add_user', [$controller, 'add_user']);
 $router->addRoute('GET', '/photo', [$controller, 'photo']);
+$router->addRoute('POST', '/photo', [$controller, 'photo']);
 $router->addRoute('GET', '/users', [$controller, 'users']);
 $router->addRoute('POST', '/users', [$controller, 'users']);
 $router->addRoute('GET', '/comments', [$controller, 'comments']);

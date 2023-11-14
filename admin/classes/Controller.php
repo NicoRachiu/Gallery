@@ -291,9 +291,16 @@ class Controller
     }
 
 
-    function users()
+    function users(...$args)
     {
+        global $twig;
         $users = Users::find_all();
+        if (empty($args['id'])) {
+            redirect("index.php");
+        }
+        return $twig->render('photo.html.twig', [
+            'users' => $users,
+        ]);
     }
 
     function photo(...$args)
