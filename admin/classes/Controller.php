@@ -20,7 +20,7 @@ class Controller
     }
 
 
-    function add_user()
+    public function add_user()
     {
         global $twig, $session;
         if (!$session->is_signed_in()) {
@@ -41,7 +41,7 @@ class Controller
     }
 
 
-    function admin_content()
+    public function admin_content()
     {
         global $twig, $session;
         $photos = new Photos;
@@ -50,7 +50,7 @@ class Controller
     }
 
 
-    function comment_photo()
+    public function comment_photo()
     {
         global $twig, $session;
         if (empty($_GET['id'])) {
@@ -61,7 +61,7 @@ class Controller
     }
 
 
-    function comments()
+    public function comments()
     {
         global $session;
         if (!$session->is_signed_in()) {
@@ -71,7 +71,7 @@ class Controller
     }
 
 
-    function delete_comment()
+    public function delete_comment()
     {
         $session = new Session;
         if (!$session->is_signed_in()) {
@@ -91,7 +91,7 @@ class Controller
     }
 
 
-    function delete_photo()
+    public function delete_photo()
     {
         $session = new Session();
         if (!$session->is_signed_in()) {
@@ -115,7 +115,7 @@ class Controller
     }
 
 
-    function delete_user()
+    public function delete_user()
     {
         global $twig;
         $session = new Session();
@@ -137,7 +137,7 @@ class Controller
     }
 
 
-    function edit_photo()
+    public function edit_photo()
     {
         global $twig;
         $session = new Session();
@@ -171,7 +171,7 @@ class Controller
     }
 
 
-    function edit_user()
+    public function edit_user()
     {
         global $twig;
         $session = new Session();
@@ -201,7 +201,7 @@ class Controller
     }
 
 
-    function header()
+    public function header()
     {
         ob_start();
     }
@@ -214,7 +214,7 @@ class Controller
     }
 
 
-    function footer()
+    public function footer()
     {
         global $twig, $session;
         $user = new Users;
@@ -229,7 +229,7 @@ class Controller
     }
 
 
-    function login()
+    public function login()
     {
         global $session, $twig;
         if ($session->is_signed_in()) {
@@ -265,7 +265,7 @@ class Controller
     }
 
 
-    function photos()
+    public function photos()
     {
         global $session, $twig;
         if (!$session->is_signed_in()) {
@@ -275,7 +275,7 @@ class Controller
     }
 
 
-    function upload()
+    public function upload()
     {
         global $session;
         if (!$session->is_signed_in()) {
@@ -291,7 +291,7 @@ class Controller
     }
 
 
-    function users(...$args)
+    public function users(...$args)
     {
         global $twig;
         $users = Users::find_all();
@@ -303,7 +303,7 @@ class Controller
         ]);
     }
 
-    function photo(...$args)
+    public function photo(...$args)
     {
         global $twig;
 
