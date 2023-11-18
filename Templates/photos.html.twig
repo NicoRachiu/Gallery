@@ -1,5 +1,5 @@
 {% extends "base.html.twig" %}
-{% block photos %}
+{% block content %}
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,7 +35,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for photos as photo : %}
+                            {% for photos in photo %}
                             ?>
                                 <tr>
                                     <td><img src="<?php echo $photo->picture_path(); ?> " width="150">
@@ -50,13 +50,6 @@
                                     <td>{{ photo.title }}</td>
                                     <td>{{ photo.size }}</td>
                                     <td>
-                                        <?php
-
-                                        {% set $comments = Admin\Classes\Comment::find_the_comments($photo.id) %}
-                                        {% echo count($comments); %}
-
-
-                                        ?>
                                         <a href="comment_photo.html.twig?id={{ photo.id }}">Comments</a>
                                     </td>
                                 </tr>

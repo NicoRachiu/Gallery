@@ -19,7 +19,6 @@ class Router
         $method       = $_SERVER['REQUEST_METHOD'];
         $uriParts     = parse_url($_SERVER['REQUEST_URI']);
         $currentRoute = $uriParts['path'];
-
         if (isset($this->routes[$method])) {
             foreach ($this->routes[$method] as $route => $target) {
 

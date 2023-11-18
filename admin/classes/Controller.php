@@ -46,13 +46,19 @@ class Controller
         global $twig, $session;
         $photos = new Photos;
         $comments = new Comment;
-        return $twig->render('admin_content.html.twig', []);
+        return $twig->render('admin_content.html.twig', [
+            'count' => $session->count,
+            'number_photo' => $photos->caption,
+        ]);
     }
 
 
-    public function comment_photo()
+    public function comment_photo(...$args)
     {
         global $twig, $session;
+        if (empty($args['id'])) {
+            redirect("index.php");
+        }
         if (empty($_GET['id'])) {
             redirect('photos');
         }
@@ -137,10 +143,12 @@ class Controller
     }
 
 
-    public function edit_photo()
+    public function edit_photo(...$args)
     {
-        global $twig;
-        $session = new Session();
+        global $twig, $session;
+        if (empty($args['id'])) {
+            redirect("index.php");
+        }
         if (!$session->is_signed_in()) {
             redirect("login.php");
         }
@@ -205,12 +213,13 @@ class Controller
     {
         ob_start();
     }
-    function dashboard()
+    public function dashboard()
     {
-        global $session;
+        global $twig, $session;
         if (!$session->is_signed_in()) {
             redirect("login");
         }
+        return $twig->render('photo.html.twig', []);
     }
 
 
@@ -265,19 +274,23 @@ class Controller
     }
 
 
-    public function photos()
+    public function photos(...$args)
     {
         global $session, $twig;
+        if (empty($args['id'])) {
+            redirect("/");
+        }
         if (!$session->is_signed_in()) {
             redirect("login.php");
         }
         $photos = Photos::find_all();
+        return $twig->render('photos.html.twig', []);
     }
 
 
     public function upload()
     {
-        global $session;
+        global $twig, $session;
         if (!$session->is_signed_in()) {
             redirect("login.php");
         }
@@ -288,6 +301,7 @@ class Controller
             $photo->title = $_POST['title'];
             $photo->set_file($_FILES['file_upload']);
         }
+        return $twig->render('upload.html.twig', []);
     }
 
 
