@@ -1,3 +1,6 @@
+{% extends 'Frontend/base.html.twig' %}
+
+{% block header %}
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -28,3 +31,25 @@
         </div>
         <!-- /.container -->
     </nav>
+{% endblock %}
+
+{% block content %}
+    <div id="wrapper">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="thumbnails row">
+                    {% for photo in photos %}
+                        <div class="col-xs-6 col-md-3">
+                            <a class="thumbnail" href="photo?id={{ photo.id }}">
+                                <img src="{{ photo.picture_path }}" alt="">
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                {% include 'Frontend/sidebar.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
