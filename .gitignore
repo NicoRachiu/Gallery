@@ -1,2 +1,6 @@
-/admin/images
+/Admin/images
 .idea
+vendor
+cache
+.DS_Store
+/images
