@@ -23,17 +23,20 @@ class Controller
     {
         global $twig, $session;
 
-        $photos = new Photos;
-        $users = new Users;
-        $comments = new Comment;
-        $color = "black";
+        $photos         = new Photos;
+        $users          = new Users;
+        $user           = Users::find_all();
+        $comments       = new Comment;
+        $comments_array = $comments->find_all();
+        $comment = array_slice($comments_array, -3, 3);
+        $color    = "black";
         return $twig->render('admin/index.html.twig', [
-            'count' => $session->count,
+            'count'          => $session->count,
             'number_photo' => $photos->number_photo(),
             'number_users' => $users->number_photo(),
             'number_comments' => $comments->number_photo(),
             'color' => $color,
-
+            'comments' => $comment,
         ]);
     }
 
@@ -222,7 +225,7 @@ class Controller
 
         $comments = Comment::find_the_comments($_GET['id']);
 
-        return $twig->render('comment_photo.html.twig', []);
+        return $twig->render('Admin/photos.html.twig', []);
     }
 
     public function commentDelete(): void
