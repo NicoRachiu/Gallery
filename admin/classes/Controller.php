@@ -24,16 +24,10 @@ class Controller
         global $twig, $session;
 
         $photos = new Photos;
-        $users = new Users;
-        $comments = new Comment;
-        $color = "black";
+
         return $twig->render('admin/index.html.twig', [
             'count' => $session->count,
-            'number_photo' => $photos->number_photo(),
-            'number_users' => $users->number_photo(),
-            'number_comments' => $comments->number_photo(),
-            'color' => $color,
-
+            'number_photo' => $photos->caption,
         ]);
     }
 
@@ -271,6 +265,7 @@ class Controller
                 $session->login($user_found);
 
                 redirect('admin');
+
             } else {
                 $the_message = "Your password or username are incorrect";
             }
