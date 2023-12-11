@@ -16,7 +16,7 @@ class DB_Object
     public static function find_all_users_by_id($id)
     {
         global $database;
-        $the_result_array = self::find_this_query("SELECT * FROM " . static::$db_table . " WHERE id = $id");
+        $the_result_array = self::find_this_query("SELECT * FROM " . static::$db_table . " WHERE id = $id LIMIT 1");
 
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }

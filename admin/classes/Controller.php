@@ -30,6 +30,7 @@ class Controller
         $comments_array = $comments->find_all();
         $comment = array_slice($comments_array, -3, 3);
         $color    = "black";
+        $username = $users->find_all_users_by_id($session->user_id);
         return $twig->render('admin/index.html.twig', [
             'count'          => $session->count,
             'number_photo' => $photos->number_photo(),
@@ -37,6 +38,8 @@ class Controller
             'number_comments' => $comments->number_photo(),
             'color' => $color,
             'comments' => $comment,
+            'route' => 'admin',
+            'username' => $username->first_name . ' ' . $username->last_name,
         ]);
     }
 
