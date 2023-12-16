@@ -29,14 +29,12 @@ class Controller
         $comments       = new Comment;
         $comments_array = $comments->find_all();
         $comment = array_slice($comments_array, -3, 3);
-        $color    = "black";
         $username = $users->find_all_users_by_id($session->user_id);
         return $twig->render('admin/index.html.twig', [
             'count'          => $session->count,
             'number_photo' => $photos->number_photo(),
             'number_users' => $users->number_photo(),
             'number_comments' => $comments->number_photo(),
-            'color' => $color,
             'comments' => $comment,
             'route' => 'admin',
             'username' => $username->first_name . ' ' . $username->last_name,
@@ -47,10 +45,8 @@ class Controller
     {
         global $twig;
 
-        $users = Users::find_all();
-
         return $twig->render('Admin/users.html.twig', [
-            'users' => $users,
+            'route' => 'users',
         ]);
     }
 
@@ -143,7 +139,9 @@ class Controller
             $photo->set_file($_FILES['file_upload']);
         }
 
-        return $twig->render('Admin/upload.html.twig', []);
+        return $twig->render('Admin/upload.html.twig', [
+            'route' => 'upload',
+        ]);
     }
 
     public function photos(...$args): string
@@ -154,7 +152,7 @@ class Controller
             redirect('login');
         }
 
-        return $twig->render('Admin/photos.html.twig', ['photos' => Photos::find_all()]);
+        return $twig->render('Admin/photos.html.twig', ['photos' => Photos::find_all(), 'route' => 'photos',]);
     }
 
     public function photoEdit(...$args): string
@@ -212,7 +210,7 @@ class Controller
             redirect('login');
         }
 
-        return $twig->render('Admin/comments.html.twig', ['comments' => Comment::find_all()]);
+        return $twig->render('Admin/comments.html.twig', ['comments' => Comment::find_all(), 'route' => 'comments',]);
     }
 
     public function comment_photo(...$args): string

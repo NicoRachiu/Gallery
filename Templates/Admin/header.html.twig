@@ -88,16 +88,16 @@
             <li class="{{ route == 'admin' ? 'active' : ''}}">
                 <a style="#" href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
-            <li>
+            <li class="{{ route == 'users' ? 'active' : ''}}">
                 <a href="/users"><i class="fa fa-fw fa-users"></i> Users</a>
             </li>
-            <li>
+            <li class="{{ route == 'upload' ? 'active' : ''}}">
                 <a href="/upload"><i class="fa fa-fw fa-upload"></i> Upload</a>
             </li>
-            <li>
+            <li class="{{ route == 'photos' ? 'active' : ''}}">
                 <a href="/photos"><i class="fa fa-fw fa-photo"></i> Photos</a>
             </li>
-            <li>
+            <li class="{{ route == 'comments' ? 'active' : ''}}">
                 <a href="/comments"><i class="fa fa-fw fa-comments"></i> Comments</a>
             </li>
 
