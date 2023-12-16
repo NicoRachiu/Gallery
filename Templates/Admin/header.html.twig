@@ -85,8 +85,8 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li>
-                <a style="color:{{ color }}" href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+            <li class="{{ route == 'admin' ? 'active' : ''}}">
+                <a style="#" href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
                 <a href="/users"><i class="fa fa-fw fa-users"></i> Users</a>
