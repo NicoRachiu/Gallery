@@ -10,6 +10,7 @@ class Comment extends DB_Object
     public $photo_id;
     public $author;
     public $body;
+    public $comments;
 
     public static function create_comment($photo_id, $author, $body)
     {
@@ -23,6 +24,14 @@ class Comment extends DB_Object
         } else {
             echo "Something of Message is empty.";
         }
+    }
+
+    public static function find_all_comments_by_id($id)
+    {
+        global $database;
+        $the_result_array = self::find_this_query("SELECT * FROM comments WHERE id = $id LIMIT 1");
+
+        return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
 
     public static function find_the_comments($photo_id = 0)

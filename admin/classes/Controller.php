@@ -37,7 +37,7 @@ class Controller
             'number_comments' => $comments->number_photo(),
             'comments' => $comment,
             'route' => 'admin',
-            'username' => $username->first_name . ' ' . $username->last_name,
+            'username' => $username->last_name,
         ]);
     }
 
