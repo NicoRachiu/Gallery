@@ -41,6 +41,50 @@ class Controller
         ]);
     }
 
+
+    public function profile(...$args): string
+    {
+        global $twig, $session;
+        if (!$session->is_signed_in()) {
+            redirect("login");
+        }
+        $users = new Users;
+        $username = $users->find_all_users_by_id($session->user_id);
+
+        $user = Users::find_all_users_by_id($session->user_id);
+        $users = new Users;
+        $userid =  print $session->user_id;
+
+        if (!$user) {
+            redirect('users');
+        }
+
+        if (isset($_POST['update'])) {
+
+            $user->username = $_POST['username'];
+            $user->first_name = $_POST['first_name'];
+            $user->last_name = $_POST['last_name'];
+            $user->email = $_POST['email'];
+            $user->password = $_POST['password'];
+
+            if (!empty($_FILES['user_image'])) {
+                $user->set_file($_FILES['user_image']);
+                $user->save_user_and_image();
+            }
+
+            $user->update();
+        }
+        return $twig->render('Admin/profile.html.twig', [
+            'last_name' => $username->last_name,
+            'first_name' => $username->first_name,
+            'password' => $username->password,
+            'username' => $username->first_name . " " . $username->last_name,
+            'email' => $username->email,
+            'photo' => $username->user_image,
+        ]);
+    }
+
+
     public function users(): string
     {
         global $twig;
