@@ -42,18 +42,15 @@ class Controller
     }
 
 
-    public function profile(...$args): string
+    public function profile(): string
     {
         global $twig, $session;
+
         if (!$session->is_signed_in()) {
-            redirect("login");
+            redirect('login');
         }
-        $users = new Users;
-        $username = $users->find_all_users_by_id($session->user_id);
 
         $user = Users::find_all_users_by_id($session->user_id);
-        $users = new Users;
-        $userid =  print $session->user_id;
 
         if (!$user) {
             redirect('users');
@@ -74,14 +71,8 @@ class Controller
 
             $user->update();
         }
-        return $twig->render('Admin/profile.html.twig', [
-            'last_name' => $username->last_name,
-            'first_name' => $username->first_name,
-            'password' => $username->password,
-            'username' => $username->first_name . " " . $username->last_name,
-            'email' => $username->email,
-            'photo' => $username->user_image,
-        ]);
+
+        return $twig->render('Admin/profile.html.twig', ['user' => $user]);
     }
 
 
