@@ -5,9 +5,10 @@ namespace Admin\Classes;
 class Comment extends DB_Object
 {
     protected static $db_table = "comments";
-    protected static $db_table_fields = ['photo_id', 'author', 'id', 'body',];
+    protected static $db_table_fields = ['photo_id', 'author', 'id', 'body', 'created',];
     public $id;
     public $photo_id;
+    public $created;
     public $author;
     public $body;
     public $comments;
