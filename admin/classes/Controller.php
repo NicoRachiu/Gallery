@@ -340,6 +340,7 @@ class Controller
                 $session->login($user_found);
 
                 redirect('admin');
+
             } else {
                 $the_message = "Your password or username are incorrect";
             }
