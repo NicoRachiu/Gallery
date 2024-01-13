@@ -23,22 +23,75 @@ class Controller
     {
         global $twig, $session;
 
-        $photos = new Photos;
-
+        $photos         = new Photos;
+        $users          = new Users;
+        $user           = Users::find_all();
+        $comments       = new Comment;
+        $comments_array = $comments->find_all();
+        $comment = array_slice($comments_array, -3, 3);
+        $username = $users->find_all_users_by_id($session->user_id);
         return $twig->render('admin/index.html.twig', [
-            'count' => $session->count,
-            'number_photo' => $photos->caption,
+            'count'          => $session->count,
+            'number_photo' => $photos->number_photo(),
+            'number_users' => $users->number_photo(),
+            'number_comments' => $comments->number_photo(),
+            'comments' => $comment,
+            'route' => 'admin',
+            'username' => $username->last_name,
         ]);
     }
 
+
+    public function profile(): string
+    {
+        global $twig, $session;
+
+        if (!$session->is_signed_in()) {
+            redirect('login');
+        }
+
+        $user = Users::find_all_users_by_id($session->user_id);
+        $users          = new Users;
+        $comments       = new Comment;
+        $comments_array = $comments->find_all();
+        $comment = array_slice($comments_array, -3, 3);
+        $username = $users->find_all_users_by_id($session->user_id);
+        if (!$user) {
+            redirect('users');
+        }
+
+        if (isset($_POST['update'])) {
+
+            $user->username = $_POST['username'];
+            $user->first_name = $_POST['first_name'];
+            $user->last_name = $_POST['last_name'];
+            $user->email = $_POST['email'];
+            $user->password = $_POST['password'];
+
+            if (!empty($_FILES['user_image'])) {
+                $user->set_file($_FILES['user_image']);
+                $user->save_user_and_image();
+            }
+
+            $user->update();
+        }
+
+        return $twig->render('Admin/profile.html.twig', ['user' => $user, 'comments' => $comment, 'username' => $username->last_name,]);
+    }
+
+
     public function users(): string
     {
-        global $twig;
-
-        $users = Users::find_all();
-
+        global $twig, $session;
+        $users          = new Users;
+        $comments       = new Comment;
+        $comments_array = $comments->find_all();
+        $comment = array_slice($comments_array, -3, 3);
+        $username = $users->find_all_users_by_id($session->user_id);
         return $twig->render('Admin/users.html.twig', [
-            'users' => $users,
+            'route' => 'users',
+            'comments' => $comment,
+            'username' => $username->last_name,
         ]);
     }
 
@@ -119,6 +172,12 @@ class Controller
     {
         global $twig, $session;
 
+        $users          = new Users;
+        $user           = Users::find_all();
+        $comments       = new Comment;
+        $comments_array = $comments->find_all();
+        $comment = array_slice($comments_array, -3, 3);
+        $username = $users->find_all_users_by_id($session->user_id);
         if (!$session->is_signed_in()) {
             redirect('login');
         }
@@ -131,18 +190,34 @@ class Controller
             $photo->set_file($_FILES['file_upload']);
         }
 
-        return $twig->render('Admin/upload.html.twig', []);
+        return $twig->render('Admin/upload.html.twig', [
+            'route' => 'upload',
+            'comments' => $comment,
+            'username' => $username->last_name,
+
+        ]);
     }
 
     public function photos(...$args): string
     {
         global $session, $twig;
 
+        $users          = new Users;
+        $user           = Users::find_all();
+        $comments       = new Comment;
+        $comments_array = $comments->find_all();
+        $comment = array_slice($comments_array, -3, 3);
+        $username = $users->find_all_users_by_id($session->user_id);
         if (!$session->is_signed_in()) {
             redirect('login');
         }
 
-        return $twig->render('Admin/photos.html.twig', ['photos' => Photos::find_all()]);
+        return $twig->render('Admin/photos.html.twig', [
+            'photos' => Photos::find_all(),
+            'route' => 'photos',
+            'comments' => $comment,
+            'username' => $username->last_name,
+        ]);
     }
 
     public function photoEdit(...$args): string
@@ -168,7 +243,7 @@ class Controller
             $photo->update();
         }
 
-        return $twig->render('Admin/photo-edit.html.twig', ['photo' => $photo]);
+        return $twig->render('Admin/photo-edit.html.twig', ['photo' => $photo,]);
     }
 
     public function photoDelete(): void
@@ -200,7 +275,7 @@ class Controller
             redirect('login');
         }
 
-        return $twig->render('Admin/comments.html.twig', ['comments' => Comment::find_all()]);
+        return $twig->render('Admin/comments.html.twig', ['comments' => Comment::find_all(), 'route' => 'comments',]);
     }
 
     public function comment_photo(...$args): string
@@ -216,7 +291,7 @@ class Controller
 
         $comments = Comment::find_the_comments($_GET['id']);
 
-        return $twig->render('comment_photo.html.twig', []);
+        return $twig->render('Admin/photos.html.twig', []);
     }
 
     public function commentDelete(): void

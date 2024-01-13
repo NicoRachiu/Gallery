@@ -13,6 +13,9 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
             <ul class="dropdown-menu message-dropdown">
+            {% for comment in comments %}
+            {% if comment.author ==  username %}
+                                {% else %}
                 <li class="message-preview">
                     <a href="#">
                         <div class="media">
@@ -21,48 +24,18 @@
                             </span>
                             <div class="media-body">
                                 <h5 class="media-heading">
-                                    <strong>John Smith</strong>
+                                    <strong>{{ comment.author }}</strong>
                                 </h5>
-                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                <p class="small text-muted"><i class="fa fa-clock-o"></i>{{ comment.created }}</p>
+                                <p>{{ comment.body }}</p>
                             </div>
                         </div>
                     </a>
                 </li>
-                <li class="message-preview">
-                    <a href="#">
-                        <div class="media">
-                            <span class="pull-left">
-                                <img class="media-object" src="http://placehold.it/50x50" alt="">
-                            </span>
-                            <div class="media-body">
-                                <h5 class="media-heading">
-                                    <strong>John Smith</strong>
-                                </h5>
-                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="message-preview">
-                    <a href="#">
-                        <div class="media">
-                            <span class="pull-left">
-                                <img class="media-object" src="http://placehold.it/50x50" alt="">
-                            </span>
-                            <div class="media-body">
-                                <h5 class="media-heading">
-                                    <strong>John Smith</strong>
-                                </h5>
-                                <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
+                {% endif %}
+                {% endfor %}
                 <li class="message-footer">
-                    <a href="#">Read All New Messages</a>
+                    <a href="/comments">Read All New Messages</a>
                 </li>
             </ul>
         </li>
@@ -94,10 +67,10 @@
             </ul>
         </li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ username }}<b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    <a href="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
@@ -115,19 +88,18 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li>
-                <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-            </li>
-            <li>
+            <li class="{{ route == 'admin' ? 'active' : ''}}">
+                <a style="#" href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+            <li class="{{ route == 'users' ? 'active' : ''}}">
                 <a href="/users"><i class="fa fa-fw fa-users"></i> Users</a>
             </li>
-            <li>
+            <li class="{{ route == 'upload' ? 'active' : ''}}">
                 <a href="/upload"><i class="fa fa-fw fa-upload"></i> Upload</a>
             </li>
-            <li>
+            <li class="{{ route == 'photos' ? 'active' : ''}}">
                 <a href="/photos"><i class="fa fa-fw fa-photo"></i> Photos</a>
             </li>
-            <li>
+            <li class="{{ route == 'comments' ? 'active' : ''}}">
                 <a href="/comments"><i class="fa fa-fw fa-comments"></i> Comments</a>
             </li>
 

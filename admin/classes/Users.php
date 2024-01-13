@@ -4,10 +4,11 @@ namespace Admin\Classes;
 
 class Users extends DB_Object
 {
-    protected static $db_table_fields = ['username', 'password', 'first_name', 'last_name', 'user_image',];
+    protected static $db_table_fields = ['username', 'password', 'email', 'first_name', 'last_name', 'user_image',];
     public $id;
     public $username;
     public $password;
+    public $email;
     public $first_name;
     public $last_name;
     public $user_image;

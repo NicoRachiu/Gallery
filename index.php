@@ -14,6 +14,9 @@ $router->addRoute('POST', '/login', [$controller, 'login']);
 
 $router->addRoute('GET', '/admin', [$controller, 'admin']);
 
+$router->addRoute('GET', '/profile', [$controller, 'profile']);
+$router->addRoute('POST', '/profile', [$controller, 'profile']);
+
 $router->addRoute('GET', '/users', [$controller, 'users']);
 $router->addRoute('POST', '/users', [$controller, 'users']);
 $router->addRoute('GET', '/user-add', [$controller, 'addUser']);
