@@ -1,0 +1,27 @@
+version: '3'
+services:
+  www:
+    image: php:apache
+    volumes:
+      - ./test.php:/var/www/html/test.php
+    ports:
+      - "80:80"
+      - "443:443"
+
+  db: 
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=php_docker
+      - MYSQL_USER=php_docker
+      - MYSQL_PASSWORD=password # this should live in a env var
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1 # equivalent to True
+    volumes:
+      - "./db:/docker-entrypoin-initdb.d"
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
