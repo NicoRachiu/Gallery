@@ -11,12 +11,13 @@ services:
   db: 
     image: mysql:latest
     environment:
-      - MYSQL_DATABASE=php_docker
+      - MYSQL_DATABASE=gallery_db
       - MYSQL_USER=php_docker
       - MYSQL_PASSWORD=password # this should live in a env var
       - MYSQL_ALLOW_EMPTY_PASSWORD=1 # equivalent to True
     volumes:
-      - "./db:/docker-entrypoin-initdb.d"
+      - "./db:/docker-entrypoint-initdb.d"
+      
   phpmyadmin:
     image: phpmyadmin
     restart: always
